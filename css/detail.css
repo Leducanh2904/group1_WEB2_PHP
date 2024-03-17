@@ -1,0 +1,520 @@
+/* . {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} */
+
+@media screen and (max-width: 1440px) {
+    body {
+        width: 1440px;
+    }
+
+    .flip-box {
+        margin-bottom: -240px;
+    }
+
+    .flip-box img {
+        width: 1300px;
+    }
+}
+
+
+.box-header {
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: static;
+    background-position: center top;
+
+}
+
+.LogoChinh img {
+    width: 100px;
+    margin-right: 5px;
+}
+
+.logohotline {
+    text-align: center;
+    margin-right: 10px;
+}
+
+.logohotline img {
+    width: 50px;
+}
+
+.PhoneNum {
+    display: flex;
+    align-items: center;
+    margin-right: 150px;
+}
+
+.PhoneNum span {
+    margin-right: 10px;
+}
+
+.PhoneNum p {
+    color: orangered;
+    font-weight: bold;
+}
+
+a:link {
+    color: green;
+    text-decoration: none;
+}
+
+.logodangnhap1 img {
+    width: 57px;
+
+}
+
+.logodangnhap1 {
+    margin-right: 20px;
+}
+
+.logogiohang img {
+    width: 57px;
+    margin: 0px;
+}
+
+.menu-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.search1 {
+    margin-right: 160px;
+}
+
+form.searchBar input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 150px;
+    background: #f1f1f1;
+
+}
+
+form.searchBar button {
+    float: left;
+    width: 50px;
+    padding: 9px;
+    background: #b8d5e6;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    /* Prevent double borders */
+    cursor: pointer;
+}
+
+form.searchBar button:hover {
+    background: rgb(190, 224, 225);
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: orange;
+}
+
+li {
+    float: left;
+}
+
+
+
+li a,
+.dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: left;
+    padding: 7px 60px;
+    text-decoration: none;
+    background-color: transparent;
+
+}
+
+li a:hover,
+.dropdown:hover .dropbtn {
+    background-color: orange;
+}
+
+li.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: orangered;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-right: 1px solid #ccc;
+    border-radius: 0 0 10px 10px;
+}
+
+.dropdown-content a {
+    display: block;
+    /* Chuyển từ inline-block sang block để mục con hiển thị dọc */
+    color: white;
+    text-align: left;
+    text-decoration: none;
+    padding: 10px;
+    border-right: 1px solid #ccc;
+    /* Thêm đường viền bên phải cho mỗi mục con */
+    transition: background-color 0.5s;
+
+
+}
+
+.dropdown-content a:hover {
+    background-color: olive;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.flip-box {
+
+    justify-content: center;
+    height: 700px;
+}
+
+.flip-box-inner {
+    position: relative;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-box:hover .flip-box-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-box-front,
+.flip-box-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    /* Safari */
+    backface-visibility: hidden;
+}
+
+/* Style the back side */
+.flip-box-back {
+    transform: rotateY(180deg);
+}
+
+.row {
+    display: flex;
+    margin: auto;
+
+    /* position: absolute; */
+    /* Sử dụng flexbox để xếp các phần tử trong hàng */
+}
+
+.wrapper {
+    width: 100px;
+    margin: 0 auto;
+    max-width: 200px;
+}
+
+.khung {
+    width: 40%;
+    /* Chiều rộng của mỗi khung */
+    height: 80px;
+    /* Độ cao của mỗi khung */
+    border: 1px solid #000;
+    /* Đường viền đen 1px */
+    border-color: rgb(138, 106, 106);
+    border-radius: 10px;
+    margin: 20px;
+    /* Khoảng cách giữa các khung */
+    text-align: center;
+    /* Căn giữa nội dung trong khung */
+    color: orange;
+    line-height: 30px;
+    /* Canh giữa nội dung theo chiều dọc */
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+/**********************/
+.sanpham img {
+    width: 100%;
+
+    object-fit: contain;
+
+}
+
+/***********************/
+
+.anhkhung {
+    display: flex;
+    height: 5vh;
+}
+
+.text1 {
+    text-align: center;
+    font-size: 200%;
+    color: orange;
+}
+
+.anhsanphammoi {
+    display: flex;
+    text-align: center
+}
+
+.khungsanphammoi {
+    /* width: 1450px;
+    height: 450px;
+    background-color: orange;
+    text-align: center;
+    justify-content: center;
+    align-items: center; */
+
+
+    /* chinh sua o day
+    width: 1450px;
+    height: 430px;
+    margin: auto;
+    text-align: center;
+    line-height: 20px;
+    background-color:oldlace;
+    */
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.khungcacsanpham {
+    display: grid;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.khungsanphammoi img {
+    width: 330px;
+    /* Chiều rộng của mỗi ảnh (45% để có khoảng trống giữa các ảnh) */
+    margin: 5px;
+    /* Khoảng trống giữa các ảnh */
+}
+
+.text2 {
+    display: block;
+    text-align: center;
+    font-size: 25px;
+    color: white;
+    padding: 20px;
+    background-color: orange;
+    /* Add a background color */
+    border-radius: 10px;
+}
+
+/* .text3 {
+    text-align: center;
+    font-size: 70%;
+    color: black;
+    padding: 30px;
+    background-color: white;
+    width: 240px;
+    height: 20px;
+} */
+
+.saleoff {
+    display: flex;
+    justify-content: center;
+    height: 200px;
+}
+
+.saleoff img {
+    margin: 10px;
+    margin-bottom: 18px;
+}
+
+.sanphamcaulong {
+    display: flex;
+    justify-content: center;
+    height: 450px;
+}
+
+.sanphamcaulong img {
+    margin: 20px;
+    margin-bottom: 20px;
+}
+
+.main-menu {
+    display: flex;
+    justify-content: center;
+}
+
+.khungden {
+    width: 100vw;
+    /* Chiều rộng của khung bằng với chiều rộng của viewport width */
+    height: 400px;
+    /* Chiều cao của khung, bạn có thể điều chỉnh theo ý muốn */
+    background-color: #333;
+    /* Màu nền của khung */
+    text-align: left;
+    /* Căn trái nội dung chữ trong các cột */
+    line-height: 20px;
+    /* Dùng để căn giữa nội dung theo chiều dọc, với chiều cao là 200px */
+    color: white;
+    /* Màu chữ */
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    line-height: 25px;
+    /* Canh giữa nội dung theo chiều dọc */
+}
+
+.cot {
+    flex: 1;
+    /* Phần tử col sẽ chiếm đủ không gian trong khung */
+    color: white;
+
+}
+
+.khungcam {
+
+    width: 100vw;
+    /* Chiều rộng của khung bằng với chiều rộng của viewport width */
+    height: 80px;
+    /* Chiều cao của khung, bạn có thể điều chỉnh theo ý muốn */
+    background-color: orange;
+    /* Màu nền của khung */
+    text-align: center;
+    /* Căn trái nội dung chữ trong các cột */
+    line-height: 25px;
+    /* Dùng để căn giữa nội dung theo chiều dọc, với chiều cao là 200px */
+    color: white;
+    /* Màu chữ */
+    margin-top: -50px;
+    /* Dịch chuyển khung lên 20px */
+
+}
+
+.btn {
+    cursor: pointer;
+    position: relative;
+    padding: 10px 20px;
+    background: white;
+    font-size: 28px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    transition: all 1s;
+}
+
+.btn:after,
+.btn:before {
+    content: " ";
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    border: 0px solid #fff;
+    transition: all 0.8s;
+}
+
+.btn:after {
+    top: 0px;
+    left: 0px;
+    border-top: 5px solid black;
+    border-left: 5px solid black;
+}
+
+.btn:before {
+    bottom: 0px;
+    right: 0px;
+    border-bottom: 5px solid black;
+    border-right: 5px solid black;
+}
+
+.btn:hover {
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.btn:hover:before,
+.btn:hover:after {
+    width: 100%;
+    height: 100%;
+}
+
+/* Your existing styles for .data-container */
+.data-container {
+    background: #ffebee;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vot {
+    margin: center;
+    font-size: medium;
+    color: black;
+}
+
+.tenvot {
+    text-decoration: none;
+    font-weight: inherit;
+}
+
+.giavot {
+    color: #e8002d;
+}
+
+/* Nút chuyển trang */
+/* .chuyen-trang-button {
+    background-color: orangered;
+    color: #8a1414;
+    padding: 100px 100px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 50px;
+    margin-right: 20px;
+}
+
+
+.chuyen-trang-button:hover {
+    background-color: red;
+} */
+
+
+.ctrang {
+    display: flex;
+    max-width: 600px;
+    margin: 10px auto;
+    margin-top: 120px;
+    justify-content: center;
+}
+
+.ctrang button {
+    background-color: white;
+    border-color: orange;
+    border-radius: 5px;
+    border-style: solid;
+    margin: 5px;
+    color: orange;
+    font-size: 20px;
+    margin-top: 800px;
+}
+
+.ctrang button:hover {
+    background-color: orange;
+    color: white;
+}

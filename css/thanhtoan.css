@@ -1,0 +1,103 @@
+.khungthanhtoana{
+    width: 30vw;
+    height: 650px;
+    margin-top: 10px;
+    text-align: left;
+    line-height: 20px;
+    margin-left: 200px; 
+    border-style: solid;
+    border-radius: 5%;
+    border-color: orange;
+}
+.khungthanhtoanb{
+    width: 35vw;
+    height: 650px;
+    margin-top: 10px;
+    text-align: left;
+    line-height: 20px;
+    background-color: rgb(234, 234, 234);
+    margin-left: 150px;  
+}
+.inform{
+    margin: 30px;
+}
+.thanhtoantext2 span{
+    margin-left: 20px;
+}
+.khungthanhtoan [type=text],
+input[type=password],
+input[type=number],
+input[type=email] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+.khungthanhtoan {
+        display: flex;
+        margin-bottom: 0px;
+        /* position: absolute; */
+        /* Sử dụng flexbox để xếp các phần tử trong hàng */
+}
+.thanhtoantext1{
+    margin-top: 10px;
+    font-size: 200%;
+    color: orange;
+}
+.thanhtoantext2{
+    margin-top: 10px;
+    font-size: 150%;
+}
+.thanhtoantext3{
+    margin-top: 10px;
+    margin-left: 20px;
+    font-size: 100%;
+    color: gray; 
+}
+.thanhtoananh1{
+    display: flex;
+    height: 100px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+.thanhtoantext4{
+    margin-top: 10px;
+    font-size: 100%;
+    color: gray;
+}
+.thanhtoantext5{
+    margin-top: 20px;
+    margin-left: 40px;
+    font-size: 100%;
+    color: gray;
+    text-align: right;
+}
+.thanhtoantext6{
+    margin-top: 10px;
+    margin-left: 20px;
+    font-size: 100%;
+    color: gray;
+    text-align: left;
+}
+.thanhtoantext7{
+    margin-top: -33px;
+    margin-right: 20px;
+    font-size: 150%;
+    color: gray;
+    text-align: right;
+}
+.thanhtoantext8{
+    margin-top: 10px;
+    margin-left: 20px;
+    font-size: 100%;
+    color: orange;
+    text-align: left;
+}
+.thanhtoantext9{
+    margin-top: -33px;
+    margin-right: 20px;
+    font-size: 150%;
+    text-align: right;
+}

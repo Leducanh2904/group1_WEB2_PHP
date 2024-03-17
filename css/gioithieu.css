@@ -1,0 +1,23 @@
+.gioithieukhung1 {
+    width: 1003px;
+    height: 3660px;
+    text-align: left;
+    margin: auto;
+    line-height: 20px;
+    background-color: whitesmoke;
+    padding: 20px;
+}
+
+.gioithieutext1 {
+    font-size: xx-large;
+    color: black;
+}
+
+.gioithieutext2 {
+    color: black;
+}
+
+.gioithieutext3 {
+    color: black;
+    text-align: center;
+}

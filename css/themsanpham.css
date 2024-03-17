@@ -1,0 +1,60 @@
+.themsanphamrow {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+.themsanphamkhung2 {
+    width: 500px;
+    text-align: left;
+    line-height: 20px;
+    background-color: white;
+    margin-right: 0px;
+    padding-left: 20px;
+    border-style: solid;
+    border-radius: 5%;
+ 
+}
+
+.themsanphamkhung1 {
+    width: 500px;
+    text-align: center;
+    line-height: 20px;
+    background-color: white;
+}
+.themsanphamtext1{
+    font-size: 200%;
+    text-align: left;
+    padding: 20px;
+    color: black;
+    margin-left: -50px;
+}
+input[type="themsanphamkhungcon"] {
+    width: 400px;
+    height: 33px;
+    margin-top: 20px;
+    margin-left: -150px;
+}
+.buttonthemvaogiohang{
+    background-color: orange;
+    color: white;
+    padding: 14px 0%;
+  
+    margin-right: -127px;
+    cursor: pointer;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: larger;
+}
+input[type="themsanphamkhungcon1"] {
+    width: 400px;
+    height: 500px;
+    margin-top: 20px;
+    margin-left: 10px;
+    justify-content:flex-start;
+   
+}
+input[type="themsanphamkhungcon2"] {
+    width: 460px;
+    height: 33px;
+    margin-top: 22px;
+    margin-left: 0px;
+}

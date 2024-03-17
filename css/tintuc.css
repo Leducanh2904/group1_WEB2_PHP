@@ -1,0 +1,63 @@
+    .khungbao1 {
+    width: 1003px;
+    height: 340px;
+    text-align: center;
+    margin: auto;
+    line-height: 20px;
+    background-color: whitesmoke;
+}
+a {
+    color: black;
+}
+.khungbao2 {
+    width: 321px;
+    height: 350px;
+    text-align: center;
+    margin-right: 20px;
+    /* Khoảng cách 20px giữa mỗi .khungbao2 */
+    background-color: whitesmoke;
+}
+
+.rowtintuc {
+    display: flex;
+    justify-content: center;
+    /* Căn giữa các .khungbao2 */
+    padding: 20px;
+    margin-left: 20px;
+}
+
+.tintucthuylinh {
+    display: flex;
+    height: 40vh;
+    padding: 20px;
+}
+
+.tintucanh {
+    display: flex;
+    height: 26vh;
+    padding: 20px;
+}
+
+.tintuctext1 {
+    font-size: xx-large;
+    color: black;
+    line-height: 1.5;
+    text-align: left;
+    margin-top: -10px;
+    margin-left: 5px;
+}
+
+.tintuctext2 {
+    color: gray;
+    text-align: left;
+    margin-top: -38px;
+    margin-left: 5px;
+}
+
+.tintuctext3 {
+    font-size: x-large;
+    color: black;
+    text-align: left;
+    padding: 20px;
+    margin-top: -20px;
+}

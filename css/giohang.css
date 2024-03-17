@@ -1,0 +1,119 @@
+.khunggiohang1{
+    width: 90vw;
+    height: 30px;
+    margin-top: 10px;
+    text-align: left;
+    line-height: 20px;
+    background-color: rgb(232, 232, 232);
+    margin-left: 60px;   
+}
+a{
+    color: black;
+}
+.khunggiohang2{
+    width: 90vw;
+    height: 30px;
+    text-align: left;
+    line-height: 20px;
+    background-color: orange;
+    margin-left: 60px;   
+}
+.khunggiohang3{
+    width: 90vw;
+    height: 1000px;
+    text-align: left;
+    line-height: 20px;
+    background-color: white;
+    margin-left: 60px;
+    margin-bottom: 60px;   
+}
+.anhgiohang{
+    display: flex;
+    height: 200px;
+}
+.giohangtext1{
+    text-align: center;
+    font-size: 115%;
+    margin-top: 80px;
+}
+.giohangtext2{
+    text-align: center;
+    font-size: 90%;
+    color: gray;
+}
+.khungthongtin{
+    width: 300px;
+}
+/* CSS để làm cho khung ngắn lại */
+.quantity-container {
+    display: flex;
+    align-items: center;
+    margin-left: 80px;
+}
+
+.qty-adjust {
+    padding: 5px 10px; /* Điều chỉnh lề nút */
+    font-size: 16px; /* Điều chỉnh kích thước chữ */
+    height: 30px;
+}
+
+.qty-num {
+    width: 30px; /* Điều chỉnh chiều rộng của ô nhập liệu */
+    height: 25px;
+    text-align: center; /* Căn giữa nội dung trong ô nhập liệu */
+    font-size: 14px; /* Điều chỉnh kích thước chữ */
+}
+.giohanggiatext{
+    text-align: center;
+    font-size: 120%;
+    margin-top: 90px;
+    margin-right: 100px;
+    margin-left: 210px;
+    color: orange;
+}
+.giohanggiatext1{
+    text-align: right;
+    font-size: 150%;
+    color: orange;
+    margin-top: -20px;
+}
+.giohanggiatext2{
+    text-align: left;
+    font-size: 150%;
+    color: black;
+}
+.khunggiohang4{
+    width: 90vw;
+    height: 30px;
+    text-align: center;
+    line-height: 20px;
+    background-color: orange; 
+    margin-top: 10px;
+    padding-top: 10px;
+}
+/* .giohangtext3{
+    background-color: orange;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 20%;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: larger;
+} */
+.giohangtext4{
+    font-size: 100%;
+    text-align: center;
+    color: black;
+    margin-top: 0px;
+}
+.my-element {
+    color: white;
+  }
+
+  /* Define the styles for the hover state */
+  .my-element:hover {
+    color: black;
+    font-weight: bold;
+  }

@@ -1,0 +1,82 @@
+.lienherow {
+    display: flex;
+    justify-content: center;
+    /* Căn giữa các .khungbao2 */
+    padding: 20px;
+}
+
+.lienhekhung1 {
+    width: 480px;
+    height: 390px;
+    text-align: left;
+    line-height: 20px;
+    background-color: white;
+    margin-right: 80px;
+    padding-left: 20px;
+    border-style: solid;
+    border-color: orange;
+    border-radius: 5%;
+    margin-top: 100px;
+}
+
+.lienhekhung2 {
+    width: 500px;
+    height: 1150px;
+    text-align: center;
+    line-height: 20px;
+    background-color: white;
+}
+
+.lienhetext1 {
+    font-size: large;
+    color: black;
+}
+
+.lienhetext2 {
+    color: black;
+    text-align: left;
+}
+
+.lienhekhung3 {
+    color: gray;
+}
+
+input[type="lienhekhungcon1"] {
+    width: 200px;
+    height: 20px;
+}
+
+input[type="lienhekhungcon2"] {
+    width: 410px;
+    height: 20px;
+    margin-top: 20px;
+}
+
+input[type="lienhekhungcon3"] {
+    width: 410px;
+    height: 20px;
+    margin-top: 20px;
+    text-align: start;
+}
+.buttonGui{
+    background-color: orange;
+    color: white;
+    padding: 14px 20px;
+    margin: 20px 0;
+    border: none;
+    cursor: pointer;
+    width: 15%;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: larger;
+}
+.lienhelogo {
+    display: flex;
+    height: 20vh;
+    padding-right: 300px;
+}
+
+.lienhetext2_2 {
+    color: black;
+    text-align: left;
+    padding-left: 10px;
+}

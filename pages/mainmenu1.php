@@ -48,7 +48,7 @@
 </header>
 
 <ul class = "main-menu">
-    <li class = "main-men"><a href="../index.php">Trang chủ</a></li>
+    <li class = "main-men"><a href="../index/index.php">Trang chủ</a></li>
     <li class="dropdown"><div class = "main-menu"><a class="dropbtn">Sản phẩm</a></div>
         
         <div class="dropdown-content">

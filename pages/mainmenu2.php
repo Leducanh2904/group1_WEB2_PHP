@@ -48,7 +48,7 @@
 </header>
    
 <ul class = "main-menu" style="margin-top: 14px; margin-left: 8px; width: 100%; height: 32px;">
-    <li class = "main-men" style="margin-top: -0.5px;"><a href="../index.php">Trang chủ</a></li>
+    <li class = "main-men" style="margin-top: -0.5px;"><a href="../index/index.php">Trang chủ</a></li>
     <li class="dropdown" style="margin-top: -0.5px;"><div class = "main-menu"><a class="dropbtn">Sản phẩm</a></div>
         
         <div class="dropdown-content">

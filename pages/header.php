@@ -1,11 +1,11 @@
 <header>
         <div class="box-header">
-            <div class="LogoChinh" ><a href="index.php"><img src="images/Logochinh.png" alt="Logo trang web" ></a>
+            <div class="LogoChinh" ><a href="../index/index.php"><img src="../images/Logochinh.png" alt="Logo trang web" ></a>
                 
             </div>
             <div class="menu-top">
                 <div class="logohotline">
-                    <img src="images/logohotline.jpg" alt="Logo hotline">
+                    <img src="../images/logohotline.jpg" alt="Logo hotline">
 
                 </div>
                 <div class="PhoneNum">
@@ -15,7 +15,7 @@
 
                 </div>
                 <div class="search1" >
-                    <form  class="searchBar" method="get" role="search" action="pages/danhmuctimkiem.php">
+                    <form  class="searchBar" method="get" role="search" action="../pages/danhmuctimkiem.php">
                         <input type="text" id="tim kiem" required
                             class="input-group-field auto-search search-auto form-control" placeholder="Tìm sản phẩm..."
                             style="border-width: 1px; border-color:rgb(16, 122, 131); border-radius: 1px; ">
@@ -34,44 +34,44 @@
                 </div>
             </div>
             <div class="logodangnhap1">
-               <a href="pages/dangnhap.php" target="_blank">
-                <img src="images/logodangnhap.png" alt="Logo đăng nhập"><br>
+               <a href="../pages/dangnhap.php" target="_blank">
+                <img src="../images/logodangnhap.png" alt="Logo đăng nhập"><br>
                 <span id="taikhoan">TÀI KHOẢN</span>
                 
             </a>
             </div>
             <div class="logogiohang">
-                <a href="pages/giohang.php" id="giohang" onclick="accessCart()">
-                    <img src="images/logogiohang.png" alt="logo giỏ hàng"><br>
+                <a href="../pages/giohang.php" id="giohang" onclick="accessCart()">
+                    <img src="../images/logogiohang.png" alt="logo giỏ hàng"><br>
                     <span>GIỎ HÀNG</span>
                     
                 </a>
             </div>
         </div>
         <ul class = "main-menu">
-        <li class = "main-men"><a href="index.php">Trang chủ</a></li>
+        <li class = "main-men"><a href="../index/index.php">Trang chủ</a></li>
         <li class="dropdown"><div class = "main-menu"><a class="dropbtn">Sản phẩm</a></div>
             
             <div class="dropdown-content">
                 <ul >
                     <li class="sub-dropdown">
-                        <a href="pages/votcaulong1.php" target="_blank">Vợt cầu lông</a>
+                        <a href="../pages/votcaulong1.php" target="_blank">Vợt cầu lông</a>
                         <div class="sub-dropdown-content">
                         </div>
                     </li>
-                    <li><a href="pages/giaycaulong1.php" target="_blank">Giày cầu lông</a>
+                    <li><a href="../pages/giaycaulong1.php" target="_blank">Giày cầu lông</a>
                         <div class="sub-dropdown-content">
                         </div>
                     </li>
-                    <li><a href="pages/quanaocaulong1.php"target="_blank">Quần áo cầu lông</a>
+                    <li><a href="../pages/quanaocaulong1.php"target="_blank">Quần áo cầu lông</a>
                         <div class="sub-dropdown-content">
                         </div>
                     </li>
-                    <li><a href="pages/balocaulong1.php"target="_blank">Balo, túi cầu lông</a>
+                    <li><a href="../pages/balocaulong1.php"target="_blank">Balo, túi cầu lông</a>
                         <div class="sub-dropdown-content">
                         </div>
                     </li>
-                    <li><a href="pages/phukiencaulong1.php"target="_blank">Phụ kiện cầu lông</a>
+                    <li><a href="../pages/phukiencaulong1.php"target="_blank">Phụ kiện cầu lông</a>
                         <div class="sub-dropdown-content">
                         </div>
                     </li>
@@ -98,16 +98,16 @@
     <div class="flip-box">
         <div class="flip-box-inner">
             <div class="flip-box-front">
-                <img src="images/Banner65z3c90.jpg" alt="Ảnh banner">
+                <img src="../images/Banner65z3c90.jpg" alt="Ảnh banner">
             </div>
             <div class="flip-box-back">
-                <img src="images/Banner1000z.jpg">
+                <img src="../images/Banner1000z.jpg">
             </div>
         </div>
         
     </div>
     <div >
-        <button onclick="topFunction()" id="myBtn" title="Go to top"><img src="images/ontop.png" alt=""></button>
+        <button onclick="topFunction()" id="myBtn" title="Go to top"><img src="../images/ontop.png" alt=""></button>
         <script>
             // Get the button
             let mybutton = document.getElementById("myBtn");
@@ -134,28 +134,28 @@
     <div class="row">
         <div class="khung" id="wrapper">
             <div class="anhkhung">
-                <img src="images/khungoto.jpg">
+                <img src="../images/khungoto.jpg">
                 Vận chuyển TOÀN QUỐC<br>
                 Thanh toán khi nhận hàng
             </div>
         </div>
         <div class="khung">
             <div class="anhkhung">
-                <img src="images/khungchatluong.jpg">
+                <img src="../images/khungchatluong.jpg">
                 Bảo đảm chất lượng<br>
                 Sản phẩm bảo đảm chất lượng.
             </div>
         </div>
         <div class="khung">
             <div class="anhkhung">
-                <img src="images/khungthanhtoan.jpg">
+                <img src="../images/khungthanhtoan.jpg">
                 Tiến hành THANH TOÁN<br>
                 Với nhiều PHƯƠNG THỨC
             </div>
         </div>
         <div class="khung">
             <div class="anhkhung">
-                <img src="images/khungdoisanpham.jpg">
+                <img src="../images/khungdoisanpham.jpg">
                 Đổi sản phẩm mới<br>
                 nếu sản phẩm lỗi
             </div>

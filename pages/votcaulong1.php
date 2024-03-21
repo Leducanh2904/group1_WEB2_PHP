@@ -15,7 +15,7 @@
    include("../pages/mainmenu1.php");
    ?>
    
-    <div class = "khungcacsanpham">
+   
     <div class="khungsanphammoi">
         <div class="sanpham">
             <a href="../pages/chitiet100zz.php"> <img src="../images/100zz01.png" alt="100zz"></a>
@@ -50,98 +50,15 @@
                 <b class ="giavot">1.150.000  <u>đ</u></b>
             </div>
         </div>
-        <div class="sanpham">
-        <a href="../pages/chitiet100zz.php"><img src="../images/votcaulongmizuno.png" alt="atroxx7"></a> 
-
-           
-
-            <div class ="tenvot">
-                <p class = "vot">Vợt Cầu Lông Mizuno Swifter SP78 - <br> Đen Vàng Trắng Chính Hãng <br></p>
-                <b class ="giavot">1.400.000  <u>đ</u></b>
-            </div>
-        </div>
-        <div class="sanpham">
-        <a href="../pages/chitiet100zz.php"><img src="../images/votcaulongmizuno01.webp" alt="atroxx7"></a>
-
-            
-
-            <div class ="tenvot">
-                <p class = "vot">Vợt Cầu Lông Mizuno Altius 02  - <br> Solear (Mã JP) <br></p>
-                <b class ="giavot">3.990.000  <u>đ</u></b>
-            </div>
-        </div>
-        <div class="sanpham">
-        <a href="../pages/chitiet100zz.php"><img src="../images/votcaulongmizuno02.png" alt="atroxx7"></a>
-
-          
-
-            <div class ="tenvot">
-                <p class = "vot">Vợt Cầu Lông Mizuno Prototype X-1.1 - <br> Đen Xanh Chính Hãng <br></p>
-                <b class ="giavot">4.400.000  <u>đ</u></b>
-            </div>
-        </div>
-        <div class="sanpham">
-        <a href="../pages/chitiet100zz.php"><img src="../images/votcaulongmizuno03.png" alt="atroxx7"></a>
-
-           
-
-            <div class ="tenvot">
-                <p class = "vot">Vợt Cầu Lông Mizuno NANOBLADE 909 - <br> Trắng Chính Hãng <br></p>
-                <b class ="giavot">1.249.000  <u>đ</u></b>
-            </div>
-        </div>
-        <div class="sanpham">
-        <a href="../pages/chitiet100zz.php"><img src="../images/votcaulonglining1.png" alt="atroxx7"></a>
-
-           
-
-            <div class ="tenvot">
-                <p class = "vot">Vợt Cầu Lông Lining 3D Calibar 001 - <br> Nội Địa Trung <br></p>
-                <b class ="giavot">1.150.000  <u>đ</u></b>
-            </div>
-        </div>
-        <div class="sanpham">
-        <a href="../pages/chitiet100zz.php"><img src="../images/votcaulonglining2.png" alt="atroxx7"></a>
-
-           
-            <div class ="tenvot">
-                <p class = "vot">Vợt Cầu Lông Lining Axforce 100 Golden Kirin - <br> Nội Địa Trung <br></p>
-                <b class ="giavot">4.600.000  <u>đ</u></b>
-            </div>
-            
-            
-
-        </div>
-        <div class="sanpham">
-        <a href="../pages/chitiet100zz.php"><img src="../images/votcaulonglining3.png" alt="atroxx7"></a>
-
-
-            <div class ="tenvot">
-                <p class = "vot">Vợt Cầu Lông Lining Windstorm 78-S Đen - <br> Nội Địa Trung <br></p>
-                <b class ="giavot">1.900.000  <u>đ</u></b>
-            </div>
-        </div>
-        <div class="sanpham">
-        <a href="../pages/chitiet100zz.php"><img src="../images/votcaulonglining4.png" alt="atroxx7"></a>
-
-           
-
-            <div class ="tenvot">
-                <p class = "vot">Vợt Cầu Lông Lining HC1100 - Đen  - <br> Nội Địa Trung <br></p>
-                <b class ="giavot">1.050.000 <u>đ</u></b>
-            </div>
-        </div>
     </div>
-        <div class ="ctrang">
-           <button class="chuyentrang" onclick="window.location.href = '../pages/votcaulong1.php '">1</button>
-           <button class="chuyentrang" onclick="window.location.href = '../pages/votcaulong2.php '">2</button>
-        </div>
-        
-        
    
-        
-
     </div>
+    <div class ="chuyentrang">
+           <button class="chuyentrang1" onclick="window.location.href = '../pages/votcaulong1.php '">1</button>
+           <button class="chuyentrang1" onclick="window.location.href = '../pages/votcaulong2.php '">2</button>
+        </div>
+    </div>
+    
    <?php
    include("../pages/footer.php");
     include("../pages/ontop1.php");

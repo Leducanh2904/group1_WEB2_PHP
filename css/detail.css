@@ -253,12 +253,7 @@ li.dropdown {
 }
 
 /**********************/
-.sanpham img {
-    width: 100%;
 
-    object-fit: contain;
-
-}
 
 /***********************/
 
@@ -279,32 +274,18 @@ li.dropdown {
 }
 
 .khungsanphammoi {
-    /* width: 1450px;
-    height: 450px;
-    background-color: orange;
-    text-align: center;
-    justify-content: center;
-    align-items: center; */
-
-
-    /* chinh sua o day
-    width: 1450px;
-    height: 430px;
-    margin: auto;
-    text-align: center;
-    line-height: 20px;
-    background-color:oldlace;
-    */
 
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 }
-
-.khungcacsanpham {
-    display: grid;
-    padding: 10px;
-    border-radius: 10px;
+.khungsanphammoi {
+    width: 1450px;
+    height: 450px;
+    text-align: center;
+    line-height: 20px;
+    margin-bottom: -800px;
 }
+
 
 .khungsanphammoi img {
     width: 330px;
@@ -477,33 +458,15 @@ li.dropdown {
     color: #e8002d;
 }
 
-/* Nút chuyển trang */
-/* .chuyen-trang-button {
-    background-color: orangered;
-    color: #8a1414;
-    padding: 100px 100px;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    font-size: 50px;
-    margin-right: 20px;
-}
 
-
-.chuyen-trang-button:hover {
-    background-color: red;
-} */
-
-
-.ctrang {
+.chuyentrang1 {
     display: flex;
     max-width: 600px;
-    margin: 10px auto;
-    margin-top: 120px;
+    height: 300px;
     justify-content: center;
 }
 
-.ctrang button {
+.chuyentrang1 button {
     background-color: white;
     border-color: orange;
     border-radius: 5px;
@@ -511,10 +474,10 @@ li.dropdown {
     margin: 5px;
     color: orange;
     font-size: 20px;
-    margin-top: 800px;
+    margin-top: 100px;
 }
 
-.ctrang button:hover {
+.chuyentrang1 button:hover {
     background-color: orange;
     color: white;
 }

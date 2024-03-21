@@ -5,20 +5,20 @@
 <head>
     <title>Tài khoản</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-    <link rel="stylesheet" href = "styleTLWeb1.css" >
-    <link rel="stylesheet" href = "taikhoan.css" >
-    <script src="function.js"></script>
+    <link rel="stylesheet" href = "../css/styleTLWeb1.css" >
+    <link rel="stylesheet" href = "../css/taikhoan.css" >
+    <script src="../js/function.js"></script>
 </head>
 
 <body onload="changAccountName()">
     <header>
         <div class="box-header">
             <div class="LogoChinh">
-                <img src="Logochinh.png" alt="Logo trang web" >
+                <img src="../images/Logochinh.png" alt="Logo trang web" >
             </div>
             <div class="menu-top">
                 <div class="logohotline">
-                    <img src="logohotline.jpg" alt="Logo hotline">
+                    <img src="../images/logohotline.jpg" alt="Logo hotline">
 
                 </div>
                 <div class="PhoneNum">
@@ -28,7 +28,7 @@
 
                 </div>
                 <div class="search1">
-                    <form  class="searchBar" method="get" role="search"action="danhmuctimkiem.html">
+                    <form  class="searchBar" method="get" role="search"action="../pages/danhmuctimkiem.php">
                         <input type="text" id="tim kiem" required
                             class="input-group-field auto-search search-auto form-control" placeholder="Tìm sản phẩm..."
                             style="border-width: 1px; border-color:rgb(16, 122, 131);  ">
@@ -44,15 +44,15 @@
                 </div>
             </div>
             <div class="logodangnhap1">
-               <a href="dangnhap.html" target="_blank">
-                <img src="logodangnhap.png" alt="Logo đăng nhập"><br>
+               <a href="../pages/dangnhap.php" target="_blank">
+                <img src="../images/logodangnhap.png" alt="Logo đăng nhập"><br>
                 <span id="taikhoan">TÀI KHOẢN</span>
                 
             </a>
             </div>
             <div class="logogiohang">
-                <a href="giohang.html" target="_blank">
-                    <img src="logogiohang.png" alt="logo giỏ hàng"><br>
+                <a href="../pages/giohang.php" target="_blank">
+                    <img src="../images/logogiohang.png" alt="logo giỏ hàng"><br>
                     <span>GIỎ HÀNG</span>
                     
                 </a>
@@ -63,29 +63,29 @@
     
    
     <ul class = "main-menu">
-        <li class = "main-men"><a href="/index/index.html">Trang chủ</a></li>
+        <li class = "main-men"><a href="../index/index.php">Trang chủ</a></li>
         <li class="dropdown"><div class = "main-menu"><a class="dropbtn">Sản phẩm</a></div>
             
             <div class="dropdown-content">
                 <ul >
                     <li class="sub-dropdown">
-                        <a href="/votcaulong/votcaulong1.html" target="_blank">Vợt cầu lông</a>
+                        <a href="../pages/votcaulong1.php" target="_blank">Vợt cầu lông</a>
                         <div class="sub-dropdown-content">
                         </div>
                     </li>
-                    <li><a href="/giaycaulong/giaycaulong1.html" target="_blank">Giày cầu lông</a>
+                    <li><a href="v/giaycaulong1.php" target="_blank">Giày cầu lông</a>
                         <div class="sub-dropdown-content">
                         </div>
                     </li>
-                    <li><a href="/quanaocaulong/quanaocaulong1.html"target="_blank">Quần áo cầu lông</a>
+                    <li><a href="../pages/quanaocaulong1.php"target="_blank">Quần áo cầu lông</a>
                         <div class="sub-dropdown-content">
                         </div>
                     </li>
-                    <li><a href="/balocaulong/balocaulong1.html"target="_blank">Balo, túi cầu lông</a>
+                    <li><a href="../pages/balocaulong1.php"target="_blank">Balo, túi cầu lông</a>
                         <div class="sub-dropdown-content">
                         </div>
                     </li>
-                    <li><a href="/phukiencaulong/phukiencaulong1.html"target="_blank">Phụ kiện cầu lông</a>
+                    <li><a href="../pages/phukiencaulong1.php"target="_blank">Phụ kiện cầu lông</a>
                         <div class="sub-dropdown-content">
                         </div>
                     </li>
@@ -121,7 +121,7 @@
                     <th class="special-table" style="width: 100px ;">Tổng</th>
                 </tr>
                 <tr>
-                    <td class="special-table" > <img src="../votcaulong/100zz01.png" width="40%" > </td>
+                    <td class="special-table" > <img src="../images/100zz01.png" width="40%" > </td>
                     <td class="special-table" >Vợt Cầu Lông Yonex Astrox 100ZZ China Limited 
                         (Nội Địa Trung) </td>
                     <td class="special-table" >9.700.000 ₫</td>
@@ -129,14 +129,14 @@
                     <td class="special-table" >9.700.000 ₫</td>
                 </tr>
                 <tr>
-                    <td class="special-table" > <img src="../phukiencaulong/day-cuoc-cang-vot-lining-n63-noi-dia-3.png" width="40%" > </td>
+                    <td class="special-table" > <img src="../images/day-cuoc-cang-vot-lining-n63-noi-dia-3.png" width="40%" > </td>
                     <td class="special-table" >Dây cước căng vợt Lining N63 nội địa </td>
                     <td class="special-table" >230.000 ₫</td>
                     <td class="special-table" ><span class="price">1</span></td>
                     <td class="special-table" >230.000 ₫</td>
                 </tr>
                 <tr>
-                    <td class="special-table" > <img src="../phukiencaulong/quan-can-yonex-xin-ac102c-15-ex-1-cuon.png" width="40%" > </td>
+                    <td class="special-table" > <img src="../images/quan-can-yonex-xin-ac102c-15-ex-1-cuon.png" width="40%" > </td>
                     <td class="special-table" >Quấn cán vợt Yonex xịn AC102C15 </td>
                     <td class="special-table" >135.000 ₫</td>
                     <td class="special-table" ><span class="price">2</span></td>

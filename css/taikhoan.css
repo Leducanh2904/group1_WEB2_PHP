@@ -1,0 +1,38 @@
+.body-info{
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+}
+.inform{
+    margin-top: 10px;
+    border-style: solid;
+    border-radius: 5%;
+    border-color: orange;
+    width: 315px;
+    height: 320px;
+}
+.inner-inform{
+    margin: 15px;
+}
+.table{
+    margin-left: 100px;
+    margin-top: 10px;
+}
+table, th, td {
+    height: 30px;
+    text-align: center;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th {
+    background-color: orange;
+}
+.dangxuat{
+    display: flex;
+}
+table.special-table,th.special-table, td.special-table{
+    width:1300px;
+    border: none;
+    border-bottom: 1px solid pink;
+}
+

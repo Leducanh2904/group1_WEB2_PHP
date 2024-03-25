@@ -1,0 +1,18 @@
+.huongdanthanhtoankhung1 {
+    width: 1003px;
+    height: 3000px;
+    text-align: left;
+    margin: auto;
+    line-height: 20px;
+    background-color: whitesmoke;
+    padding: 20px;
+}
+
+.huongdanthanhtoantext1 {
+    font-size: xx-large;
+    color: black;
+}
+
+.huongdanthanhtoantext2 {
+    color: black;
+}

@@ -152,7 +152,7 @@ form.searchBar input[type=text] {
 form.searchBar button {
     float: left;
     width: 50px;
-    padding: 9.18px;
+    padding: 11.5px;
     background: #b8d5e6;
     color: white;
     font-size: 17px;
@@ -468,52 +468,37 @@ li.dropdown {
     justify-content: center;
     color: black;
 }
+.khungcacsanpham {
+    margin-bottom: 600px;
+}
 
+/* Đảm bảo rằng footer sẽ nằm ở dưới cùng của trang */
 .khungden {
     width: 97.5vw;
-    /* Chiều rộng của khung bằng với chiều rộng của viewport width */
-    height: 400px;
-    /* Chiều cao của khung, bạn có thể điều chỉnh theo ý muốn */
+    height: auto; /* Sửa chiều cao thành auto để nội dung có thể mở rộng */
     background-color: #333;
-    /* Màu nền của khung */
     text-align: left;
-    /* Căn trái nội dung chữ trong các cột */
-    /* Dùng để căn giữa nội dung theo chiều dọc, với chiều cao là 200px */
     color: white;
-    /* Màu chữ */
     display: flex;
     justify-content: space-around;
-    margin-top: 50px;
-    /* 20px */
     line-height: 25px;
-    /* Canh giữa nội dung theo chiều dọc */
 }
 
-.cot {
-    flex: 1;
-    /* Phần tử col sẽ chiếm đủ không gian trong khung */
-    color: white;
-
-}
-
+/* Đảm bảo rằng footer sẽ nằm ở dưới cùng của trang */
 .khungcam {
     width: 97.5vw;
-    /* Chiều rộng của khung bằng với chiều rộng của viewport width */
-    height: 80px;
-    /* Chiều cao của khung, bạn có thể điều chỉnh theo ý muốn */
+    height: auto; /* Sửa chiều cao thành auto để nội dung có thể mở rộng */
     background-color: orange;
-    /* Màu nền của khung */
     text-align: center;
-    /* Căn trái nội dung chữ trong các cột */
     line-height: 25px;
-    /* Dùng để căn giữa nội dung theo chiều dọc, với chiều cao là 200px */
     color: white;
-    /* Màu chữ */
-    margin-top: -50px;
-    /* -50 */
-    /* Dịch chuyển khung lên 20px */
-
+    margin-top: 0px; /* Sửa margin-top thành 20px */
 }
+.cot {
+    flex: 1;
+    color: white;
+}
+
 
 .btn {
     cursor: pointer;

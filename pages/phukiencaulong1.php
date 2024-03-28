@@ -49,15 +49,6 @@
             </div>
         </div>
     </div>
-        <div class ="ctrang">
-           <button class="chuyentrang" onclick="window.location.href = '../pages/phukiencaulong1.php '">1</button>
-           <button class="chuyentrang" onclick="window.location.href = '../pages/phukiencaulong2.php '">2</button>
-        </div>
-        
-        
-   
-        
-
     </div>
     <div>
         <?php

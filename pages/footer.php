@@ -1,3 +1,7 @@
+<div class ="ctrang">
+           <button class="chuyentrang" onclick="window.location.href = '../pages/votcaulong1.php '">1</button>
+           <button class="chuyentrang" onclick="window.location.href = '../pages/votcaulong2.php '">2</button>
+        </div>
 <div class="khungden">
         <div class="cot">THÔNG TIN CHUNG<br>
             TQDA Sports là hệ thống cửa hàng cầu lông với<br> hơn 50 chi nhánh trên toàn quốc, cung cấp sỉ và<br> lẻ các

@@ -477,40 +477,25 @@ li.dropdown {
     color: #e8002d;
 }
 
-/* Nút chuyển trang */
-/* .chuyen-trang-button {
-    background-color: orangered;
-    color: #8a1414;
-    padding: 100px 100px;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    font-size: 50px;
-    margin-right: 20px;
-}
-
-
-.chuyen-trang-button:hover {
-    background-color: red;
-} */
-
-
 .ctrang {
+    margin-top: auto; /* Khoảng cách từ phần tử trước đến nút chuyển trang */
+    margin-bottom: auto; /* Khoảng cách dự phòng để tránh bị đè lên */
     display: flex;
-    max-width: 500  px;
-    margin: 10px auto;
-    margin-top: 50px;
-    justify-content: center;
+    flex-wrap: wrap; /* Cho phép các nút chuyển trang xuống dòng mới khi không còn đủ chỗ */
+    justify-content: center; /* Căn giữa các nút theo chiều ngang */
 }
 
 .ctrang button {
     background-color: white;
-    border-color: orange;
+    border: 1px solid orange; /* Tính chất rút gọn của thuộc tính border */
     border-radius: 5px;
-    border-style: solid;
     margin: 5px;
+    padding: 10px 20px; /* Kích thước lớn hơn cho các nút chuyển trang */
     color: orange;
-    font-size: 20px;
+    font-size: 16px; /* Giảm kích thước chữ cho các nút chuyển trang */
+    cursor: pointer; /* Hiển thị con trỏ khi rê chuột qua */
+    
+
 }
 
 .ctrang button:hover {

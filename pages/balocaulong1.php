@@ -47,10 +47,6 @@ include("../pages/mainmenu1.php");
             </div>
         </div>
     </div>
-        <div class ="ctrang">
-           <button class="chuyentrang" onclick="window.location.href = 'balocaulong1.php '">1</button>
-           <button class="chuyentrang" onclick="window.location.href = 'balocaulong2.php '">2</button>
-        </div>
     </div>
     <?php 
     include ("../pages/footer.php");

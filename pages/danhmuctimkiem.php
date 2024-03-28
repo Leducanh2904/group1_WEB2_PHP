@@ -14,123 +14,53 @@
 
 <body onload="changAccountName()">
     <?php
+    include("../admin/config.php");
     include("../pages/mainmenu1.php");
     ?>
     <div style="font-size: xx-large; margin-left: 70px; margin-top: 35px; margin-bottom: 30px;">
-        Kết quả tìm kiếm sản phẩm [Balo cầu lông] &nbsp; <a href="../pages/timkiemnangcao.php" style="font-size: large; color: blue;">Tìm kiếm nâng cao</a>
+        &nbsp; <a href="../pages/timkiemnangcao.php" style="font-size: large; color: blue;">Tìm kiếm nâng cao</a>
     </div>
-    <div class = "khungcacsanpham">
-    <div class="khungsanphammoi">
-        <div class="sanpham">
-            <img src="../images/balo-cau-long-yonex-888-hong-gia-cong.png" alt="100zz">
-
-            <div class ="tenvot">
-                <p class = "vot">Balo cầu lông Yonex 888</p>
-                <b class ="giavot">700.000 <u>đ</u></b>
-            </div>
-        </div>
-        <div class="sanpham">
-            
-            <img src="../images/balo-cau-long-yonex-888-xanh-ngoc-gia-cong.png" alt="atroxx7">
-            <div class ="tenvot">
-                <p class = "vot">Balo cầu lông Yonex 888</p>
-                <b class ="giavot">700.000 <u>đ</u></b>
-            </div>
-        </div>
-        <div class="sanpham">
-            <img src="../images/balo-cau-long-kawasaki-8233-xanh-chuoi-3.png" alt="Ax90">
-            <div class ="tenvot">
-                <p class = "vot">Balo cầu lông Kawasaki 8233</p>
-                <b class ="giavot">750.000 <u>đ</u></b>
-            </div>
-        </div>
-        <div class="sanpham">
-            <img src="../images/balo-cau-long-kawasaki-8242-xanh-chinh-hang-1.png" alt="001">
-
-            <div class ="tenvot">
-                <p class = "vot">Balo cầu lông Kawasaki 8242</p>
-                <b class ="giavot">650.000 <u>đ</u></b>
-            </div>
-        </div>
-        <div class="sanpham">
-            <img src="../images/balo-cau-long-lining-absr142-4-chinh-hang_1694034045.png" alt="Mizuno1">
-
-            <div class ="tenvot">
-                <p class = "vot">Balo cầu lông Lining ABSR142</p>
-                <b class ="giavot">800.000 <u>đ</u></b>
-            </div>
-        </div>
-        <div class="sanpham">
-            <img src="../images/balo-cau-long-lining-abss085-2-noi-dia-trung.png" alt="Mizuno 2">
-
-            <div class ="tenvot">
-                <p class = "vot">Balo cầu lông Lining ABSS085</p>
-                <b class ="giavot">1.000.000 <u>đ</u></b>
-            </div>
-        </div>
-        <div class="sanpham">
-            <img src="../images/balo-cau-long-mizuno-bodice-backpack-xam-1.png" alt="Mizuno 3">
-
-            <div class ="tenvot">
-                <p class = "vot">Balo Cầu Lông Mizuno Bodice</p>
-                <b class ="giavot">2.350.000 <u>đ</u></b>
-            </div>
-        </div>
-        <div class="sanpham">
-            <img src="../images/balo-cau-long-mz-bp2001-1.png" alt="Mizuno 4">
-
-            <div class ="tenvot">
-                <p class = "vot">Balo Cầu Lông Mizuno BP2001</p>
-                <b class ="giavot">1.950.000 <u>đ</u></b>
-            </div>
-        </div>
-        <div class="sanpham">
-            <img src="../images/balo-cau-long-sunbatta-sb-2221-1.png" alt="Ảnh 1">
-
-            <div class ="tenvot">
-                <p class = "vot">Balo Cầu Lông Sunbatta SB2221</p>
-                <b class ="giavot">630.000 <u>đ</u></b>
-            </div>
-        </div>
-        <div class="sanpham">
-            <img src="../images/balo-cau-long-sunbatta-sb-2223-1.png" alt="Ảnh 2">
-            <div class ="tenvot">
-                <p class = "vot">Balo Cầu Lông Sunbatta SB2223</p>
-                <b class ="giavot">640.000 <u>đ</u></b>
-            </div>
-            
-            
-
-        </div>
-        <div class="sanpham">
-            <img src="../images/balo-cau-long-victor-br-9010-cu-xanh-duong-chinh-hang-1.png" alt="Ảnh 3">
-
-            <div class ="tenvot">
-                <p class = "vot">Balo Cầu Lông Victor BR9010</p>
-                <b class ="giavot">1.000.000<u>đ</u></b>
-            </div>
-        </div>
-        <div class="sanpham">
-            <img src="../images/balo-cau-long-victor-br2001-b-xanh-chinh-hang.png" alt="Ảnh 4">
-
-            <div class ="tenvot">
-                <p class = "vot">Balo Cầu Lông Victor BR2001</p>
-                <b class ="giavot">1.139.000 <u>đ</u></b>
-            </div>
+    <div class="khungcacsanpham">
+        <div class="khungsanphammoi">
+            <?php
+        if (isset($_POST['search_query'])) {
+            $search_query = $_POST['search_query'];
+            $sql = "SELECT * FROM products WHERE ProductName LIKE '%$search_query%'";
+            $result = $mysqli->query($sql);
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo "<div class='sanpham'>";
+                    echo "<img src='../images/{$row['ImageURL']}' alt='{$row['ProductName']}'>";
+                    echo "<div class='tenvot'>";
+                    echo "<p class='vot'>" . $row['ProductName'] . "</p>";
+                    echo "<b class='giavot'>" . number_format($row['Price']) . " <u>đ</u></b>";
+                    echo "</div>";
+                    echo "</div>";
+                }
+            } else {
+                echo "Không có sản phẩm nào phù hợp với từ khóa tìm kiếm.";
+            }
+            $result->free();
+        }
+        ?>
         </div>
     </div>
-        <div class ="ctrang">
-           <button class="chuyentrang" onclick="window.location.href = '../pages/danhmuctimkiem.php '">1</button>
-           <button class="chuyentrang" onclick="window.location.href = '../pages/danhmuctimkiem1.php '">2</button>
-        </div>
-        
-        
-   
-        
-<div><style>
-    
-   </style>
-   </div>
+    <!-- ....... -->
+
+    </div>
+    <div class="ctrang">
+        <button class="chuyentrang" onclick="window.location.href = '../pages/danhmuctimkiem.php '">1</button>
+        <button class="chuyentrang" onclick="window.location.href = '../pages/danhmuctimkiem1.php '">2</button>
+    </div>
+
+
+
+
+    <div>
+        <style>
+
+        </style>
+    </div>
     </div>
     <div>
         <?php

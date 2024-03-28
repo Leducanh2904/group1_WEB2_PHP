@@ -1,7 +1,11 @@
+<?php
+include ("connection.php");
+$sql = "SELECT * FROM products";
+$result = mysqli_query($conn,$sql);
+$maxProducts = 4;
+?>
 <!DOCTYPE html>
-
 <html>
-
 <head>
     <title>Vợt cầu lông</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
@@ -16,59 +20,31 @@
     ?>
     <div class = "khungcacsanpham">
     <div class="khungsanphammoi">
-        <div class="sanpham">
-        <a href="../pages/chitiet100zz.php"><img src="../images/votcaulonglining9000c.jpg" alt="atroxx7"></a>
-
-            
-
-            <div class ="tenvot">
-                <p class = "vot">Vợt Cầu Lông Lining Aeronaut 9000C - <br> Chính Hãng <br></p>
-                <b class ="giavot">3.700.000 <u>đ</u></b>
-            </div>
-        </div>
-        <div class="sanpham">
-        <a href="../pages/chitiet100zz.php"><img src="../images/votcaulonglining900c.jpg" alt="atroxx7"></a>
-            
-            
-            <div class ="tenvot">
-                <p class = "vot">Vợt Cầu Lông Lining Calibar 900C - Xám  <br> Xanh- Nội Địa- Bảo Hành 6 Tháng <br></p>
-                <b class ="giavot">4.660.000 <u>đ</u></b>
-            </div>
-        </div>
-        <div class="sanpham">
-        <a href="../pages/chitiet100zz.php"><img src="../images/votcaulongliningax90.jpg" alt="atroxx7"></a>
-
-          
-            <div class ="tenvot">
-                <p class = "vot">Vợt Cầu Lông Lining Axforce 90 <br> Đỏ Tiger Max Chính Hãng <br></p>
-                <b class ="giavot">5.200.000 <u>đ</u></b>
-            </div>
-        </div>
-        <div class="sanpham">
-        <a href="../pages/chitiet100zz.php"><img src="../images/votcaulongliningtec9.jpg" alt="atroxx7"></a>
-
-
-            <div class ="tenvot">
-                <p class = "vot">Vợt Cầu Lông Lining Tectonic 9 - <br> Chính Hãng <br></p>
-                <b class ="giavot">3.500.000  <u>đ</u></b>
-            </div>
-        </div>
-        
+    <?php
+   $count = 0;
+while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+    if($row['Status'] == 0){
+    echo '<div class="sanpham">';
+    echo '<a href="../pages/chitiet100zz.php"><img src="../images/'.$row['ImageURL'].'" alt="'.$row['ProductName'].'"></a>';
+    echo '<div class="tenvot">';
+    echo '<p class="vot">'.$row['ProductName'].'<br><br></p>';
+    // Định dạng giá sản phẩm
+    $formattedPrice = number_format($row['Price'],0 , ',','.'). 'vnđ';
+    echo '<b class="giavot">'.$formattedPrice.' <u>đ</u></b>';
+    echo '</div>';
+    echo '</div>';
+    $count++;
+    if ($count >= $maxProducts) {
+        break;
+    }}
+} 
+mysqli_close($conn);
+    ?>       
     </div>
-        <div class ="ctrang">
-           <button class="chuyentrang" onclick="window.location.href = '../pages/votcaulong1.php '">1</button>
-           <button class="chuyentrang" onclick="window.location.href = '../pages/votcaulong2.php '">2</button>
-        </div>
-        
-        
-   
-        
-
-    </div>
+</div>
     <?php
     include("../pages/ontop1.php");
     include("../pages/footer.php");
     ?>
 </body>
-
-        </html>
+</html>

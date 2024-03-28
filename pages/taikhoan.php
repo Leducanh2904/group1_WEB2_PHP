@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <html>
@@ -11,11 +12,6 @@
 </head>
 
 <body onload="changAccountName()">
-    <script>
-        function LogOut(){
-            localStorage.clear();
-        }
-    </script>
     <?php
     include("../pages/mainmenu1.php");
     ?>
@@ -24,7 +20,18 @@
             <div class="inner-inform">
                 <h1 class="title-head widget-title">Thông tin tài khoản</h1>
                 <div class="dangxuat">
-                    <p><i>Xin chào, </i><b style="color: #E95221;">Lê Đức Anh</b> &nbsp; <a onclick="LogOut()" href="../pages/dangnhap.php" style="color: rgb(77, 20, 131); text-decoration: underline;"> Đăng xuất </a></p>
+                    
+                    <p><i>Xin chào, </i><b style="color: #E95221;">
+                        <?php
+                            if(!isset($_COOKIE["user"])) {
+                            echo "Cookie named '" . $cookie_name . "' is not set!";
+                            } else {
+                            
+                            echo "" . $_COOKIE["user"];
+                            }
+                        ?>
+                
+                    </b> &nbsp; <a href="logOut.php" style="color: rgb(77, 20, 131); text-decoration: underline;"> Đăng xuất </a></p>
                     
                 </div>
                 

@@ -10,10 +10,4 @@
     catch(mysqli_sql_exception){
         echo "you are not connected";
     }
-    if($conn){
-        echo"you are connected"; 
-    }
-    else{
-        echo "you are not connected";
-    }
 ?> 

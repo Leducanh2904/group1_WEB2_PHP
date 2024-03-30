@@ -21,7 +21,7 @@
             <a href="../pages/chitietsp.php"><img src="../images/giay-cau-long-yonex-aerus-z2-men-2023-cyan-chinh-hang2490.png" alt="100zz"></a>
 
             <div class ="tenvot">
-                <p class = "vot">Giày cầu lông Kawasaki 065 chính hãng</p>
+                <p class = "vot">Giày cầu lông Kawasaki 065</p>
                 <b class ="giavot">1.090.000 <u>đ</u></b>
             </div>
         </div>

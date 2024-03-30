@@ -177,7 +177,7 @@
         <div class="sanphamcaulong">
           
              <a href="../pages/votcaulong1.php" target="_blank"> 
-            <div class="btn"> <!-- Add .btn class to your buttons -->
+            <div class="btn"> 
                 
                 <img src="../images/Sanphamvotcaulong.jpg" alt="ảnh vọt cầu lông"  > 
                 

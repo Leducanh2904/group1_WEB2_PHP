@@ -120,7 +120,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: orange;
+    /* background-color: orange; */
 }
 
 li {
@@ -279,22 +279,6 @@ li.dropdown {
 }
 
 .khungsanphammoi {
-    /* width: 1450px;
-    height: 450px;
-    background-color: orange;
-    text-align: center;
-    justify-content: center;
-    align-items: center; */
-
-
-    /* chinh sua o day
-    width: 1450px;
-    height: 430px;
-    margin: auto;
-    text-align: center;
-    line-height: 20px;
-    background-color:oldlace;
-    */
 
     display: grid;
     grid-template-columns: repeat(4, 1fr);

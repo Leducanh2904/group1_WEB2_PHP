@@ -1,17 +1,28 @@
 <?php
 include("connection.php");
 
-// Sử dụng prepared statement
-$sql = "SELECT * FROM products WHERE ProductID = ?";
-$stmt = mysqli_prepare($conn, $sql);
-mysqli_stmt_bind_param($stmt, "s", $productID);
-$productID = 'TQDA290404';
-mysqli_stmt_execute($stmt);
-$result = mysqli_stmt_get_result($stmt);
+if(isset($_GET['id']) && !empty($_GET['id'])) {
+    $productID = $_GET['id'];
 
-// Kiểm tra xem có kết quả trả về hay không
-if ($result && mysqli_num_rows($result) > 0) {
-    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+    // Sử dụng prepared statement
+    $sql = "SELECT * FROM products WHERE ProductID = ?";
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, "s", $productID);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
+    // Kiểm tra xem có kết quả trả về hay không
+    if ($result && mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+    } else {
+        // Xử lý khi không tìm thấy sản phẩm
+        echo "Không tìm thấy sản phẩm.";
+        exit; // Dừng việc thực hiện mã PHP tiếp theo
+    }
+} else {
+    // Xử lý khi không có tham số ProductID trong URL
+    echo "Tham số sản phẩm không hợp lệ.";
+    exit; // Dừng việc thực hiện mã PHP tiếp theo
 }
 ?>
 <!DOCTYPE html>
@@ -25,11 +36,8 @@ if ($result && mysqli_num_rows($result) > 0) {
 </head>
 <body onload="changAccountName()">
 <?php include("../pages/mainmenu2.php"); ?>
-<div class="bodywrap">
+<div class="bodywrap"style="margin-top:70px">
     <section class="bread-crumb">
-        <div class="container">
-            <section class="layout-product product">
-        </div>
     <div class="container">
         <div class="details-product">
             <div class="row1">
@@ -53,7 +61,11 @@ if ($result && mysqli_num_rows($result) > 0) {
                             <!-- Hiển thị giá và ưu đãi -->
                             <div class="price-box clearfix">
                                 <span class="special-price">
-                                    <span class="price product-price"><b style="font-size: x-large;"><?php echo $row['Price']; ?> ₫</b></span>
+                                <?php
+                                        // Định dạng giá tiền theo mong muốn
+                                        $price = number_format($row['Price'], 0, ',', '.'); // Định dạng số tiền với dấu chấm ngăn cách hàng nghìn
+                                        echo $price . "₫";
+                                    ?>
                                 </span>
                             </div>
                             <fieldset class="pro-discount uu_dai">
@@ -67,21 +79,21 @@ if ($result && mysqli_num_rows($result) > 0) {
                             </fieldset>
                             <br>
                             <?php
-                            // Truy vấn cơ sở dữ liệu để lấy chuỗi size
-                            $sql = "SELECT * FROM products WHERE Category LIKE 'Vợt'"; // Điều chỉnh điều kiện truy vấn tùy thuộc vào nhu cầu của bạn
-                            $result = mysqli_query($conn, $sql);
-                            // Kiểm tra xem có kết quả từ truy vấn không
-                            if (mysqli_num_rows($result) > 0) {
-                                $row = mysqli_fetch_assoc($result);
-                                $sizes = explode(", ", $row['Size']); // Phân tách chuỗi size thành một mảng
+                            if ($row['Category'] == 'Vợt') {
+                                $sizes = array('2U', '3U', '4U', '5U');
+                            } elseif ($row['Category'] == 'Giày') {
+                                $sizes = array('40', '41', '42', '43', '44','45');
+                            } else {
+                                // Nếu không phải vợt hoặc giày, không hiển thị size
+                                $sizes = array();
+                            }
 
+                            if (!empty($sizes)) {
                                 echo '<div class="form-product">';
                                 echo '<div class="select-swatch">';
                                 echo '<div class="swatch clearfix" data-option-index="0">';
                                 echo '<div class="header12">Chọn size:</div> <br>';
-                                echo '<select name="size">'; // Thẻ select để hiển thị combobox
-
-                                // Lặp qua mảng các size và tạo một option cho mỗi size
+                                echo '<select name="size">'; 
                                 foreach ($sizes as $size) {
                                     echo "<option value='" . $size . "'>" . $size . "</option>";
                                 }
@@ -93,13 +105,12 @@ if ($result && mysqli_num_rows($result) > 0) {
                             } else {
                                 echo "Không có size nào được tìm thấy.";
                             }
+
                             ?>
                             <style>
                                 .header12 {
                                     font-size: 20px;
                                 }
-
-                                /* CSS để tùy chỉnh kích thước và kiểu dáng của combobox */
                                 select {
                                     padding: 10px; /* Độ dày của các viền xung quanh combobox */
                                     font-size: 20px; /* Cỡ chữ trong combobox */
@@ -150,50 +161,7 @@ if ($result && mysqli_num_rows($result) > 0) {
             </div>
         </div>
     </div>
-    <?php include("../pages/ontop1.php"); ?>
-    <div class="khungden">
-        <div class="cot">THÔNG TIN CHUNG<br>
-            TQDA Sports là hệ thống cửa hàng cầu lông với<br> hơn 50 chi nhánh trên toàn quốc, cung cấp sỉ và<br> lẻ các
-            mặt hàng dụng cụ cầu lông từ phong trào<br> tới chuyên nghiệp<br>
-
-            Với sứ mệnh: "TQDA cam kết mang đến những<br> sản phẩm, dịch vụ chất lượng tốt nhất phục vụ<br> cho người
-            chơi thể thao để nâng cao sức khỏe<br> của chính mình."<br>
-
-            Tầm nhìn: "Trở thành nhà phân phối và sản xuất<br> thể thao lớn nhất Việt Nam"</div>
-        <div class="cot">THÔNG TIN LIÊN HỆ<br>
-            Hệ thống cửa hàng: 1 shop Premium 59 cửa<br> hàng trên toàn quốc<br>
-            Xem tất cả các cửa hàng TQDA<br>
-
-            Hotline: 0931335214 | 0963261328 | 0364655945<br>
-            Email: TQDA@gmail.com<br>
-            Hợp tác kinh doanh: 0931335214 (Mr. Quân)<br>
-            Hotline bán sỉ: 0911 105 211<br>
-            Nhượng quyền thương hiệu: 0963261328 (Mr. Nan)<br>
-            Than phiền dịch vụ: 0364655945 (Mr. Đức Anh)</div>
-        <div class="cot">CHÍNH SÁCH<br>
-            Chính sách đổi trả,hoàn tiền<br>
-            Chính sách bảo hành<br>
-            Chính sách xử lý khiếu nại<br>
-            Chính sách vận chuyển<br>
-            Điều khoản sử dụng<br>
-            Chính Sách Bảo Mật Thông Tin<br>
-            Chính sách nhượng quyền</div>
-        <div class="cot">HƯỚNG DẪN<br>
-            Tìm hiểu công việc tập huấn tennis trước khi<br> tổ chức giải đấu<br>
-            Bảng size Lining - Cách chọn size quần áo<br> lining, giày cầu lông Lining<br>
-            Hướng dẫn cách tập tennis cho người mới<br> chơi<br>
-            Hướng dẫn cách chọn vợt cầu lông cho người<br> mới chơi<br>
-            Hướng dẫn thanh toán<br>
-            Kiểm tra bảo hành<br>
-            Kiểm tra đơn hàng<br>
-            HƯỚNG DẪN MUA HÀNG</div>
-    </div>
-    <div class="khungcam">
-        <div class="cot">
-            © CÔNG TY TNHH TQDA SPORTS<br>
-            GPKD số 0559966452 do Sở KH và ĐT TP Hồ Chí Minh cấp ngày 20/10/2023<br>
-            GĐ/Sở hữu by TQDA<bsite:br>
-        </div>
-    </div>
+    <?php include("../pages/ontop1.php");
+     include("../pages/footer1.php"); ?>
 </body>
 </html>

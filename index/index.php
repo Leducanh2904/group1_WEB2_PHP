@@ -12,5 +12,6 @@ include("../pages/header.php");
 include("../pages/main_index.php");
 include("../pages/footer.php");
 ?>
+<?php ?>
 </body>
 </html>

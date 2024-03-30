@@ -171,6 +171,14 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
+    /* background-color: orange; */
+}
+.main-menu
+{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
     background-color: orange;
 }
 
@@ -334,7 +342,7 @@ li.dropdown {
     justify-content: center;
     align-items: center; */
     width: 1450px;
-    height: 450px;
+    height: auto;
     margin: auto;
     text-align: center;
     line-height: 20px;
@@ -469,7 +477,8 @@ li.dropdown {
     color: black;
 }
 .khungcacsanpham {
-    margin-bottom: 600px;
+    height: auto;
+
 }
 
 /* Đảm bảo rằng footer sẽ nằm ở dưới cùng của trang */
@@ -582,4 +591,41 @@ li.dropdown {
     justify-content: center; /* căn chỉnh theo trục ngang */
     align-items: center; /* căn chỉnh theo trục dọc */
 }
+
+.maincontent
+{
+    height: auto;
+    width: 100%;
+}
+.product_list 
+{
+   padding: 0;
+   margin: 0;
+   list-style: none;
+   width: 100%;
+}
+.product_list li img
+{
+    width: 100%;
+}
+.product_list li
+{
+width: 30%;
+margin-left: 30px;
+margin-top: 10px;
+float: left;
+}
+.product_list p
+{
+    margin: 4px;
+}
+.footer_end
+{
+    height: auto;
+}
+.tabs-title
+{
+    background-color: orange ;
+}
+
 

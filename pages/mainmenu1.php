@@ -128,7 +128,7 @@
         </div>
         <div class="khung">
             <div class="anhkhung">
-                <img src="../imagesindex/khungdoisanpham.jpg">
+                <img src="../images/khungdoisanpham.jpg">
                 Đổi sản phẩm mới<br>
                 nếu sản phẩm lỗi
             </div>

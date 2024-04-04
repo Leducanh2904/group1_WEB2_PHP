@@ -11,145 +11,82 @@
 </head>
 
 <body>
-<!-- =============== Navigation ================ -->
-<?php 
-                include ("../pages/taskbar.php");
-                ?>
+    <!-- =============== Navigation ================ -->
+    <?php include "../pages/taskbar.php"; ?>
 
-               <!-- ========================= Main ==================== -->
-               <?php 
-                include ("../pages/mainadmin.php");
-                ?>
+    <!-- ========================= Main ==================== -->
+    <?php include "../pages/mainadmin.php"; ?>
 
-            <!-- ================ Order Details List ================= -->
-            <div class="details">
-                <div class="recentOrders" style="width: 1200px; text-align: center;">
-                    <div class="cardHeader">
-                        <h2 id="orderHeader">Đơn hàng được hiển thị</h2> 
-                    </div><br>
-                    <div>
-                        <label for="startDate">Từ ngày:</label>
-                        <input type="date" id="startDate">
-                        <label for="endDate">Đến ngày:</label>
-                        <input type="date" id="endDate">
-                        <button onclick="hienThiDonHang()" style="background-color: orange; border-radius: 3px; width: 140px; ">Hiển thị đơn hàng</button>
-                    </div> <br>
+    <!-- ================ Order Details List ================= -->
+    <div class="details">
+        <div class="recentOrders" style="width: 1200px; text-align: center;">
+            <div class="cardHeader">
+                <h2 id="orderHeader">Đơn hàng được hiển thị</h2>
+            </div><br>
+            <div>
+                <label for="startDate">Từ ngày:</label>
+                <input type="date" id="startDate">
+                <label for="endDate">Đến ngày:</label>
+                <input type="date" id="endDate">
+                <button onclick="hienThiDonHang()" style="background-color: orange; border-radius: 3px; width: 140px; ">Hiển thị đơn hàng</button>
+            </div> <br>
 
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mã đơn hàng</th>
+                        <th>Ngày xuất đơn</th>
+                        <th>Số lượng sản phẩm</th>
+                        <th>Tổng giá trị đơn hàng</th>
+                        <th>Trạng thái</th>
+                        <th style="text-align: center;">Thao tác quản trị viên</th>
+                    </tr>
+                </thead>
 
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Mã đơn hàng</th>
-                                <th>Ngày xuất đơn</th>
-                                <th>Số lượng sản phẩm</th>
-                                <th>Tổng giá trị đơn hàng</th>
-                                <th>Trạng thái</th>
-                                <th style="text-align: center;">Thao tác quản trị viên</th>
-                    
-                            </tr>
-                        </thead>
+                <tbody id="orderTableBody">
+                    <?php
+                   include ("connection.php");
 
-                        <tbody id="orderTableBody">
-                            <script>
-                                function toggleButtons() {
-                                    // Hiển thị hoặc ẩn nút thêm và nút xóa
-                                    var addButton = document.getElementById("addButton");
-                                    var deleteButton = document.getElementById("deleteButton");
-                        
-                                    if (addButton.style.display === "none") {
-                                        addButton.style.display = "inline";
-                                        deleteButton.style.display = "inline";
-                                    } else {
-                                        addButton.style.display = "none";
-                                        deleteButton.style.display = "none";
-                                    }
-                                }
-                            </script>
-                        </tbody>
-                            <tr>
-                                <td>2021032957845</td>
-                                <td style="text-align: center;">14/12/2023</td>
-                                <td>4</td>
-                                <td>10.200.000 ₫</td>
-                                <td>
-                                    <select name="trangthai">
-                                        <option value="1">Đã xử lý</option>
-                                        <option value="2">Chưa xử lý</option>
-                                    </select>
-                                </td>
- <td style="text-align: center;"><button class="status inProgress" type="button" onclick="window.location.href='../pages/chitietdonhangtuadmin.php' "> Chi tiết</button></td> 
-                                
-                                
+                    // Truy vấn SQL để lấy dữ liệu từ bảng orders
+                    $sql = "SELECT * FROM orders";
+                    $result = mysqli_query($conn, $sql);
 
-                            </tr>
+                    // Hiển thị dữ liệu từ cơ sở dữ liệu
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            echo "<tr>";
+                            echo "<td>" . $row['order_code'] . "</td>";
+                            echo "<td>" . $row['order_date'] . "</td>";
+                            echo "<td>" . $row['quantity'] . "</td>";
+                            echo "<td>" . $row['total_price'] . "</td>";
+                            echo "<td>";
+                            echo "<select name='trangthai'>";
+                            echo "<option value='1'>Đã xử lý</option>";
+                            echo "<option value='2'>Chưa xử lý</option>";
+                            echo "</select>";
+                            echo "</td>";
+                            echo "<td style='text-align: center;'><button class='status inProgress' type='button' onclick='window.location.href=\"../pages/chitietdonhangtuadmin.php\"'> Chi tiết</button></td>";
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='6'>Không có dữ liệu</td></tr>";
+                    }
 
-                            <tr>
-                                <td>2021032957928</td>
-                                <td style="text-align: center;">24/12/2023</td>
-                                <td>10</td>
-                                <td>1.120.000 ₫</td>
-                                <td>
-                                    <select name="trangthai">
-                                        <option value="1">Chưa xử lí</option>
-                                        <option value="2">Đã xử lí</option>
-                                    </select>
-                                </td>
-<td style="text-align: center;"><button class="status inProgress" type="button" onclick="window.location.href='../pages/chitietdonhangtuadmin.php' ">Chi tiêt</button></td> 
-                                
+                    // Đóng kết nối
+                    mysqli_close($conn);
+                    ?>
+                </tbody>
+            </table>
 
-                            </tr>
+            <div class="tdh">
+                <a href="../pages/donhangmoi.php" class="">
+                    <button class="saveBtn" type="button" style="font-size: large; border-radius: 5px; border: 2px solid black; width: 180px; height: 60px;"> Tạo đơn hàng mới</button>
+                </a>
+            </div>
 
-                            <tr>
-                                <td>2021032952785</td>
-                                <td style="text-align: center;">11/12/2022</td>
-                                <td>1</td>
-                                <td>4.270.000 ₫</td>
-                                <td>
-                                    <select name="trangthai">
-                                        <option value="1">Đã xử lý</option>
-                                        <option value="2">Chưa xử lý</option>
-                                    </select>
-                                </td>
-<td style="text-align: center;"><button class="status inProgress" type="button" onclick="window.location.href='../pages/chitietdonhangtuadmin.php' ">Chi tiết</button></td> 
-                                
+        </div>
+    </div>
 
-                            </tr>
-
-                            <tr>
-                                <td>2021032948329</td>
-                                <td style="text-align: center;">11/12/2023</td>
-                                <td>3</td>
-                                <td>3.240.000 ₫</td>
-                                <td>
-                                    <select name="trangthai">
-                                        <option value="1">Đã xử lý</option>
-                                        <option value="2">Chưa xử lý</option>
-                                    </select>
-                                </td>
-
-<td style="text-align: center;"><button class="status inProgress" type="button" onclick="window.location.href='../pages/chitietdonhangtuadmin.php' ">Chi tiết</button></td>    
-                            </tr><tr>
-                                <td>2870032948229</td>
-                                <td style="text-align: center;">13/10/2023</td>
-                                <td>4</td>
-                                <td>4.560.000 ₫</td>
-                                <td>
-                                    <select name="trangthai">
-                                        <option value="1">Chưa xử lý</option>
-                                        <option value="2">Đã xử lý</option>
-                                    </select>
-                                </td>
-
-<td style="text-align: center;"><button class="status inProgress" type="button" onclick="window.location.href='../pages/chitietdonhangtuadmin.php' ">Chi tiết</button></td>                        
-                            </tr> 
-                        </table>
-                        <div class="tdh">
-                            <a href="../pages/donhangmoi.php" class="" >    
-                                <button class="saveBtn" type="button" style="font-size: large; border-radius: 5px; border: 2px solid black; width: 180px; height: 60px;" > Tạo đơn hàng mới</button>
-                            </a>
-                        </div>
-                        
-                                
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
@@ -175,11 +112,6 @@
                 alert('Ngày bắt đầu không thể sau ngày kết thúc.');
                 return;
             }
-
-            // Xử lý logic hiển thị đơn hàng ở đây
-            // ...
-
-            // Sau khi xử lý logic, hiển thị thông tin trong bảng
             orderHeader.innerHTML = 'Đơn hàng được hiển thị từ ' + startDate + ' đến ' + endDate;
             orderTableBody.innerHTML = `
                 <tr>
@@ -197,11 +129,10 @@
                         <button class="status inProgress" type="button" onclick="window.location.href='../index/chitietdonhangtuadmin.php' "> Chi tiết</button>
                     </td>
                 </tr>
-               
             `;
         }
     </script>
-   
+
 </body>
 
-</php>
+</html>

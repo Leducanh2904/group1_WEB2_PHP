@@ -11,7 +11,6 @@
 
   <body>
     <!-- =============== Navigation ================ -->
-    
 
           <?php 
                 include ("../pages/taskbar.php");

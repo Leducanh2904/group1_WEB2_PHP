@@ -1,27 +1,23 @@
 <?php
 include("connection.php");
-if (isset($_GET['trang']))
-{
+if (isset($_GET['trang'])) {
     $page = $_GET['trang'];
-}
-else {
+} else {
     $page = '';
 }
-if ($page == '' || $page == '1')
-{
+if ($page == '' || $page == '1') {
     $begin = 0;
-}
-else 
-{
-    $begin = ($page*4) - 4;
+} else {
+    $begin = ($page * 4) - 4; 
 }
 
-$sql1 = "SELECT * FROM products order by ProductID DESC limit $begin,5";
+$sql1 = "SELECT * FROM products WHERE Category ='Giày' ORDER BY ProductID DESC LIMIT $begin,4";
 $result = mysqli_query($conn, $sql1);
 $count = 0;
-$maxProducts = 4;
+$maxProducts = 5; // Sửa $maxProducts thành 5
 
-mysqli_close($conn);
+// Đóng kết nối cơ sở dữ liệu sau khi sử dụng dữ liệu
+// mysqli_close($conn);
 ?>
 <!DOCTYPE html>
 <html>
@@ -34,40 +30,36 @@ mysqli_close($conn);
 </head>
 
 <body onload="changAccountName()">
-   <?php
-   include("../pages/mainmenu1.php");
-   ?>
+<?php
+include("../pages/mainmenu1.php");
+?>
 <div class="khungcacsanpham">
-        <div class="khungsanphammoi">
-           <?php
-           // Loop through the fetched products and display their details
-           while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            if ($row['Category'] === 'Giày') {
-               echo '<div class="sanpham">';
-               echo '<a href="../pages/chitiet100zz.php?id='.$row['ProductID'].'"><img src="../images/'.$row['ImageURL'].'" alt="'.$row['ProductName'].'"></a>';
-               echo '<div class="tenvot">';
-               echo '<p class="vot">'.$row['ProductName'].'<br><br></p>';
-               $formattedPrice = number_format($row['Price'], 6, ',', '.') . 'vnđ';
-               echo '<b class="giavot">'.$formattedPrice.' <u>đ</u></b>';
-               echo '</div>';
-               echo '</div>';
-           }
+    <div class="khungsanphammoi">
+        <?php
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            echo '<div class="sanpham">';
+            echo '<a href="../pages/chitiet100zz.php?id='.$row['ProductID'].'"><img src="../images/'.$row['ImageURL'].'" alt="'.$row['ProductName'].'"></a>';
+            echo '<div class="tenvot">';
+            echo '<p class="vot">'.$row['ProductName'].'<br><br></p>';
+            $formattedPrice = number_format($row['Price'], 0, ',', '.');
+            echo '<b class="giavot">'.$formattedPrice.' <u>đ</u></b>';
+            echo '</div>';
+            echo '</div>';
+            $count++;
         }
-           ?>
-        </div>
+        ?>
     </div>
+</div>
 
-
-    <div class="footer_end">
-    <div class ="ctrang">
-        <?php 
+<div class="footer_end">
+    <div class="ctrang">
+    <?php 
         include("connection.php");
-        $sql_trang = mysqli_query($conn,"SELECT * FROM products where category ='Giày'");
+        $sql_trang = mysqli_query($conn,"SELECT * FROM products where Category ='Quần áo'");
         $row_count = mysqli_num_rows($sql_trang);
         $trang = ceil($row_count/4);
         ?>
         <?php
-        // Tạo nút chuyển trang
         for ($i = 1; $i <= $trang; $i++) {
             echo '<button class="chuyentrang" ';
             if ($i == $page) {
@@ -75,12 +67,12 @@ mysqli_close($conn);
             }
             echo '><a href="giaycaulong1.php?trang=' . $i . '">' . $i . '</a></button>';
         }
-        
         ?>
     </div>
 </div>
-    <?php
-   include("../pages/footer.php");
-   ?>
+
+<?php
+include("../pages/footer.php");
+?>
 </body>
 </html>

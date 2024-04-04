@@ -1,7 +1,30 @@
+<?php
+include("connection.php");
+if (isset($_GET['trang']))
+{
+    $page = $_GET['trang'];
+}
+else {
+    $page = '';
+}
+if ($page == '' || $page == '1')
+{
+    $begin = 0;
+}
+else 
+{
+    $begin = ($page*4) - 4;
+}
+
+$sql = "SELECT * FROM products order by ProductID DESC limit $begin,5";
+$result = mysqli_query($conn, $sql);
+$count = 0;
+$maxProducts = 4;
+
+mysqli_close($conn);
+?>
 <!DOCTYPE html>
-
 <html>
-
 <head>
     <title>Quần áo cầu lông</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
@@ -14,45 +37,57 @@
 <body onload="changAccountName()">
 <?php
    include ("../pages/mainmenu1.php");
-   ?>
-    <div class = "khungcacsanpham">
-    <div class="khungsanphammoi">
-        <div class="sanpham">
-            <a href="../pages/chitietsp4.php"><img src="../images/quan-cau-long-yonex-nu-trang-ma-006-1.png" alt="100zz"></a>
-            <div class ="tenvot">
-                <p class = "vot">Quần cầu lông Lining 92001 </p>
-                <b class ="giavot">139.000 <u>đ</u></b>
-            </div>
-        </div>
-        <div class="sanpham">
-            <a href="../pages/chitietsp5.php"> <img src="../images/quan-cau-long-victor-nu-den-ma-433-1.png" alt="atroxx7"></a>
-            <div class ="tenvot">
-                <p class = "vot">Quần cầu lông Lining 9209 </p>
-                <b class ="giavot">130.000 <u>đ</u></b>
-            </div>
-        </div>
-        <div class="sanpham">
-            <a href="../pages/chitietsp6.php"> <img src="../images/quan-cau-long-lining-9210-trang-xanh_1.png"></a>
-            <div class ="tenvot">
-                <p class = "vot">Quần cầu lông Lining 9210 </p>
-                <b class ="giavot">130.000 <u>đ</u></b>
-            </div>
-        </div>
-        <div class="sanpham">
-          <a href="../pages/chitietsp7.php"> <img src="../images/quan-cau-long-lining-9682-den-vang.png" alt=""></a>
-            <div class ="tenvot">
-                <p class = "vot">Quần cầu lông Lining 9682 </p>
-                <b class ="giavot">139.000 <u>đ</u></b>
-            </div>
+?>
+ <div class="khungcacsanpham">
+        <div class="khungsanphammoi">
+            <?php
+            while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                if ($row['Category'] === 'Quần áo') {
+                    if ($count < $maxProducts) { 
+                echo '<div class="sanpham">';
+                echo '<a href="../pages/chitiet100zz.php?id='.$row['ProductID'].'"><img src="../images/'.$row['ImageURL'].'" alt="'.$row['ProductName'].'"></a>';
+                echo '<div class="tenvot">';
+                echo '<p class="vot">'.$row['ProductName'].'<br><br></p>';
+                $formattedPrice = number_format($row['Price'], 0, ',', '.') ;
+                echo '<b class="giavot">'.$formattedPrice.' <u>đ</u></b>';
+                echo '</div>';
+                echo '</div>';
+                $count++;
+            } else 
+            {
+                break;
+            }
+        }
+    }
+            ?>
         </div>
     </div>
+
+    <div class="footer_end">
+    <div class ="ctrang">
+        <?php 
+        include("connection.php");
+        $sql_trang = mysqli_query($conn,"SELECT * FROM products where Category ='Quần áo'");
+        $row_count = mysqli_num_rows($sql_trang);
+        $trang = ceil($row_count/4);
+        ?>
+        <?php
+        // Tạo nút chuyển trang
+        for ($i = 1; $i <= $trang; $i++) {
+            echo '<button class="chuyentrang" ';
+            if ($i == $page) {
+                echo 'style="background: red;"';
+            }
+            echo '><a href="quanaocaulong1.php?trang=' . $i . '">' . $i . '</a></button>';
+        }
+        
+        ?>
     </div>
-    <div>
+</div>
+
         <?php
         include ("../pages/footer.php");
         include ("../pages/ontop1.php");
         ?>
-    </div>
 </body>
-
-        </html>
+</html>

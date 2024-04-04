@@ -15,11 +15,10 @@
 
             </div>
             <div class="search1">
-                <form class="searchBar" method="post" role="search" action="../pages/danhmuctimkiem.php">
+                <form class="searchBar" method="get" role="search" action="../pages/danhmuctimkiem.php">
                     <input type="text" id="tim_kiem" name="search_query" required
                         class="input-group-field auto-search search-auto form-control" placeholder="Tìm sản phẩm..."
                         style="border-width: 1px; border-color:rgb(16, 122, 131); border-radius: 1px; ">
-
                     <button type="submit" aria-label="Tìm kiếm" title="Tìm kiếm">
                         <svg width="20" height="17" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -63,14 +62,6 @@
                     </div>
                 </li>
                 <li><a href="../pages/quanaocaulong1.php"target="_blank">Quần áo cầu lông</a>
-                    <div class="sub-dropdown-content">
-                    </div>
-                </li>
-                <li><a href="../pages/balocaulong1.php"target="_blank">Balo, túi cầu lông</a>
-                    <div class="sub-dropdown-content">
-                    </div>
-                </li>
-                <li><a href="../pages/phukiencaulong1.php"target="_blank">Phụ kiện cầu lông</a>
                     <div class="sub-dropdown-content">
                     </div>
                 </li>

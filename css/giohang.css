@@ -20,7 +20,7 @@ a{
 }
 .khunggiohang3{
     width: 90vw;
-    height: 1000px;
+    height: atuo;
     text-align: left;
     line-height: 20px;
     background-color: white;
@@ -117,3 +117,43 @@ a{
     color: black;
     font-weight: bold;
   }
+.maincard
+{
+    background-color: orange;
+    
+}
+.maincard span
+{
+    font-size: x-large;
+}
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.cart-table th, .cart-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.cart-table img {
+    max-width: 100px;
+    height: auto;
+}
+
+.empty-cart-message {
+    font-style: italic;
+}
+.total-label {
+    text-align: left;
+    font-size: x-large;
+    color: red;
+    
+}

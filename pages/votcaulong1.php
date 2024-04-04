@@ -16,12 +16,11 @@ else
     $begin = ($page*4) - 4;
 }
 
-$sql = "SELECT * FROM products order by ProductID limit $begin,5";
+$sql = "SELECT * FROM products WHERE Category = 'Vợt' ORDER BY ProductID LIMIT $begin, 20";
 $result = mysqli_query($conn, $sql);
 $count = 0;
 $maxProducts = 4;
 
-mysqli_close($conn);
 ?>
 
 
@@ -51,7 +50,7 @@ mysqli_close($conn);
                 echo '<a href="../pages/chitiet100zz.php?id='.$row['ProductID'].'"><img src="../images/'.$row['ImageURL'].'" alt="'.$row['ProductName'].'"></a>';
                 echo '<div class="tenvot">';
                 echo '<p class="vot">'.$row['ProductName'].'<br><br></p>';
-                $formattedPrice = number_format($row['Price'], 6, ',', '.') . 'vnđ';
+                $formattedPrice = number_format($row['Price'], 0, ',', '.');
                 echo '<b class="giavot">'.$formattedPrice.' <u>đ</u></b>';
                 echo '</div>';
                 echo '</div>';

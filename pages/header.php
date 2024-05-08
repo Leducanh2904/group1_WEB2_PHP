@@ -63,7 +63,7 @@
                         echo "#";
                     }
                     ?>
-                    ondblclick="alert('aaaa')";
+                    ondblclick="alert('Bạn cần đăng nhập để xem giỏ hàng !!!')";
                     <?php
                         if(!isset($_COOKIE["user"])) {
                             echo " onclick='accessCart()' ";

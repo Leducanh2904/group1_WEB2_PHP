@@ -44,7 +44,7 @@
                                 $status1 = $_POST['statusInput'];
                                 echo $status1;
                                 $order_id1 = $_POST['order_id'];
-                                $sql1 = "UPDATE orders 
+                                $sql1 = "UPDATE orders
                                         SET status='$status1'
                                         WHERE order_id = '$order_id1'";
                                 $result1 = mysqli_query($conn,$sql1);
@@ -72,6 +72,8 @@
                             <tr>
                                 <th>Mã đơn hàng</th>
                                 <th>Ngày xuất đơn</th>
+                                <th>Họ & tên</th>
+                                <th>SĐT</th>
                                 <th>Địa chỉ giao hàng</th>
                                 <th>Tổng giá trị đơn hàng</th>
                                 <th>Trạng thái</th>
@@ -99,12 +101,16 @@
                         <?php
                             $count = 0;
                             while ($row4 = $result->fetch_assoc()){ 
+                            $formattedtotal = number_format($row4['total_amount'], 0, ',', '.');
                                 echo "
                                 <tr>
-                                    <td>".$row4['order_id']. "</td>
+                                
+                                    <td >".$row4['order_id']. "</td>
                                     <td>".$row4['order_date']. "</td>
+                                    <td>".$row4['fullName']. "</td>
+                                    <td>".$row4['phone_number']. "</td>
                                     <td>".$row4['address']. "</td>
-                                    <td>".$row4['total_amount']. "</td>";
+                                    <td>".$formattedtotal. "&nbsp<u>đ</u></td>";
                                     if($row4['status'] == 0){
                                         echo "
                                             <td name='statusChange'>Chưa xác nhận</td>
@@ -192,26 +198,28 @@
                                             <!-- Modal content -->
                                             <div class="modal-content">
                                                 <span class="close" name="close1" >&times;</span>
-                                                <table style="width: 100%">
+                                                <table style="width: 100%; table-layout: fixed;">
                                                     <tr>
-                                                        <th>Mã sản phẩm</th>
-                                                        <th>Hình ảnh</th>
-                                                        <th>Tên sản phẩm</th>
-                                                        <th>Số lượng</th>
-                                                        <th>Đơn giá</th>
+                                                    <th style="width: 20%;">Mã sản phẩm</th>
+                                                    <th style="width: 20%;">Hình ảnh</th>
+                                                    <th style="width: 20%;">Tên sản phẩm</th>
+                                                    <th style="width: 20%;">Số lượng</th>
+                                                    <th style="width: 20%;">Đơn giá</th>
                                                     </tr>';
-                                                    while($row5 = $result5->fetch_assoc()){
+                                                    while ($row5 = $result5->fetch_assoc()) {
                                                         $productID = $row5['productID'];
                                                         $sql6 = "SELECT * FROM products WHERE productID = '$productID'";
                                                         $result6 = mysqli_query($conn, $sql6);
                                                         $row6 = mysqli_fetch_array($result6, MYSQLI_ASSOC);
+                                                        $formattedPrice = number_format($row6['Price'], 0, ',', '.');
+                                                    
                                                         echo '
                                                         <tr>
-                                                            <td>'.$row5['productID'].'</td>
-                                                            <td><img style="width: 10%; display: flex" src="../images/' . $row6['ImageURL'] . '"></td>
-                                                            <td>'.$row6['ProductName'].'</td>
-                                                            <td>'.$row5['amount'].'</td>
-                                                            <td>'.$row6['Price'].'</td>
+                                                            <td>' . $row5['productID'] . '</td> 
+                                                            <td><img style="width: 50%; display: flex; margin-left: 140px;" src="../images/' . $row6['ImageURL'] . '"></td>
+                                                            <td><p style = "margin-left:50%;">' . $row6['ProductName'] . '</p></td>
+                                                            <td>' . $row5['amount'] . '</td>
+                                                            <td>' . $formattedPrice . '</td>
                                                         </tr>';
                                                     }
                                                     echo '
@@ -239,7 +247,7 @@
                     background-color: rgb(0,0,0); /* Fallback color */
                     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
                     }
-
+                   
                     /* Modal Content/Box */
                     .modal-content {
                     background-color: #fefefe;

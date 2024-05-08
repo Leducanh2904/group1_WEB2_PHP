@@ -8,192 +8,96 @@
     <title>Trang chủ Admin</title>
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .welcome-text {
+            font-size: 100px;
+            animation: blink 1s infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .firework {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff0000;
+            border-radius: 50%;
+            animation: fireworks 2s infinite;
+        }
+
+        @keyframes fireworks {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(0, -500px) scale(0.2);
+                opacity: 0;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <style>
-        
-    </style>
-    <script>
-        function LogOut(){
-            localStorage.clear();
-        }
-    </script>
-    
     <!-- =============== Navigation ================ -->
-                <?php 
-                include ("../pages/taskbar.php");
-                ?>
-        <!-- ========================= Main ==================== -->
-        <?php 
-                include ("../pages/mainadmin.php");
-                ?>
-            
+    <?php
+    include("../pages/taskbar.php");
+    ?>
+    <!-- ========================= Main ==================== -->
+    <?php
+    include("../pages/mainadmin.php");
+    ?>
 
-            <!-- ================ Order Details List ================= -->
-            <div class="details">
-                <div class="recentOrders">
-                    <div class="cardHeader">
-                        <h2>Đặt hàng gần đây</h2>
-                        
-                    </div>
-                    <table >
-                        <thead>
-                            <tr>
-                                <td>Tên sản phẩm</td>
-                                <td>Giá</td>
-                                <td>Thanh toán</td>
-                                <td>Trạng thái</td>
-                            </tr>
-                        </thead>
+    <div style="display: flex; justify-content: center;">
+        <p class="welcome-text">WELCOME TO <br> &nbsp;TQDA&nbsp; ADMIN</p>
+        <script>
+            const welcomeText = document.querySelector('.welcome-text');
 
-                        <tbody>
-                            <tr>
-                                <td>Vợt Cầu Lông Yonex Astrox 100ZZ China Limited</td>
-                                <td>9.700.000 <u>đ</u></td>
-                                <td>Tiền mặt</td>
-                                <td><span class="status pending">Đã xử lí</span></td>
-                            </tr>
+            function createFirework() {
+                const firework = document.createElement('span');
+                firework.classList.add('firework');
+                firework.style.left = Math.random() * 100 + '%';
+                firework.style.animationDelay = Math.random() * 2 + 's';
+                welcomeText.appendChild(firework);
+            }
 
-                            <tr>
-                                <td>Giày cầu lông Kawasaki 065 chính hãng</td>
-                                <td>1.090.000 <u>đ</u></td>
-                                <td>Online</td>
-                                <td><span class="status pending">Đã xử lí</span></td>
-                            </tr>
+            setInterval(createFirework, 500);
 
-                            <tr>
-                                <td>Áo Cầu Lông Yonex 2071 Nữ - Trắng </td>
-                                <td>160.000 <u>đ</u></td>
-                                <td>Tiền mặt</td>
-                                <td><span class="status return">Chưa xử lí</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Váy Cầu Lông Donex Pro ASC-898</td>
-                                <td>269.000 <u>đ</u></td>
-                                <td>Online</td>
-                                <td><span class="status pending">Đã xử lí</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Balo Cầu Lông Yonex BA268 Xanh</td>
-                                <td>1.100.000 <u>đ</u></td>
-                                <td>Online</td>
-                                <td><span class="status return">Chưa xử lí</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Vợt Cầu Lông Victor Thruster TTY</td>
-                                <td>3.550.000 <u>đ</u></td>
-                                <td>Online</td>
-                                <td><span class="status pending">Đã xử lí</span></td>
-                            </tr>
-                            <tr>
-                                <td>Túi Cầu Lông Yonex BA02326EX </td>
-                                <td>890.000 <u>đ</u></td>
-                                <td>Tiền mặt</td>
-                                <td><span class="status pending">Đã xử lí</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Dây Cước Căng Vợt Lining N61</td>
-                                <td>180.00 <u>đ</u></td>
-                                <td>Tiền mặt</td>
-                                <td><span class="status pending">Đã xử lí</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- ================= New Customers ================ -->
-                <div class="recentCustomers">
-                    <div class="cardHeader">
-                        <h2>Khách hàng gần đây</h2>
-                    </div>
-
-                    <table>
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="../images/customer01.png" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Ngọc Triều<br> <span>0364655945</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="../images/customer01.png" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Minh Quân<br> <span>Việt Nam</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="../images/customer03.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Đức Anh<br> <span>Việt Nam</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="../images/customer01.png" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Tuấn Cùi <br> <span>Việt Nam</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="../images/customer02.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Hiếu Ba Số <br> <span>Việt Nam </span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="../images/customer01.png" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Huy Châu <br> <span>Cali</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="../images/customer02.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Bình Minh <br> <span>Cali</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="../images/customer02.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Phúc Du <br> <span>Việt Nam</span></h4>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
+            function LogOut() {
+                localStorage.clear();
+            }
+        </script>
     </div>
 
 
+    <style>
+        @keyframes blink {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+    </div>
+    </div>
+    </div>
+
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script> 
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>

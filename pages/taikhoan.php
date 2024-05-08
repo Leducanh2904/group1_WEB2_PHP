@@ -18,7 +18,9 @@
     include("connection.php");
     // show customer details
     $a= $_COOKIE["user"];
-    $sql3 = "SELECT * FROM account WHERE fullName = '$a' ";
+    $sql1 = "SELECT fullName FROM account WHERE username = '$a'";
+    $result = mysqli_query($conn, $sql1);
+    $sql3 = "SELECT * FROM account WHERE username = '$a' ";
     $result3 = mysqli_query($conn, $sql3);
     $row3 = mysqli_fetch_array($result3, MYSQLI_ASSOC);
     $userName = $row3["username"];
@@ -124,13 +126,14 @@
                                                     $sql6 = "SELECT * FROM products WHERE productID = '$productID'";
                                                     $result6 = mysqli_query($conn, $sql6);
                                                     $row6 = mysqli_fetch_array($result6, MYSQLI_ASSOC);
+                                                    $formattedPrice1 = number_format($row6['Price'], 0, ',', '.');
                                                     echo '
                                                     <tr>
                                                         <td>'.$row5['productID'].'</td>
                                                         <td><img style="width: 10%; display: flex" src="../images/' . $row6['ImageURL'] . '"></td>
                                                         <td >'.$row6['ProductName'].'</td>
                                                         <td>'.$row5['amount'].'</td>
-                                                        <td>'.$row6['Price'].'</td>
+                                                        <td>'.$formattedPrice1.'</td>
                                                     </tr>';
                                                 }
                                                 echo '
@@ -217,8 +220,8 @@
                 </script>
             </div>
         </div>
-    </div> <br> <br>
-    <?php
+    </div> <br>
+    <br>    <?php
     include("../pages/footer.php");
     ?>
 </body>

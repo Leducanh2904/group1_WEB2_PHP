@@ -57,7 +57,7 @@ $maxProducts = 4;
                 $count++;
             } else 
             {
-                break;
+            break;
             }
         }
     }

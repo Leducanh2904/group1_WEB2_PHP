@@ -1,5 +1,6 @@
 <?php
-include("../admin/config.php");
+include("../pages/config.php");
+include("./connection.php");
 include("../pages/mainmenu1.php");
 
 // Số sản phẩm hiển thị trên mỗi trang
@@ -60,7 +61,7 @@ if (isset($_GET['search_query'])) {
             if ($total_products > 0 && isset($result) && $result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     echo "<div class='sanpham'>";
-                    echo "<img src='../images/{$row['ImageURL']}' alt='{$row['ProductName']}'>";
+                    echo '<a href="../pages/chitiet100zz.php?id='.$row['ProductID'].'"><img src="../images/'.$row['ImageURL'].'" alt="'.$row['ProductName'].'"></a>';
                     echo "<div class='tenvot'>";
                     echo "<p class='vot'>" . $row['ProductName'] . "</p>";
                     echo "<b class='giavot'>" . number_format($row['Price']) . " <u>đ</u></b>";

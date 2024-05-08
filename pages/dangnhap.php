@@ -7,17 +7,21 @@
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
     $count = mysqli_num_rows($result);
-    
     if($count==1){
-        echo"
-            <script>
-            window.location.href = 'taikhoan.php';
-            </script>
-        ";
-        $cookie_name = "user";
-        // $row2 = $result2->fetch_assoc();
-        $cookie_value = $row["fullName"];
-        setcookie($cookie_name, $cookie_value,time() + (86400 * 30), "/");
+        if($row['statusA'] == 0) {
+            $count = 2;
+        }
+        else {
+            echo"
+                <script>
+                window.location.href = 'taikhoan.php';
+                </script>
+            ";
+            $cookie_name = "user";
+            // $row2 = $result2->fetch_assoc();
+            $cookie_value = $row["username"];
+            setcookie($cookie_name, $cookie_value,time() + (86400 * 30), "/");
+        }
     }
     mysqli_close($conn);
     }
@@ -52,9 +56,13 @@
                     <input type="password" placeholder="Mật khẩu" name="psw" id="password" required>
                     <br>
                     <?php 
-                        if(isset($count) && $count !=1){
+                        if(isset($count) && $count == 2){
+                            echo "<p style = 'color :red'>Tài khoản của bạn đã bị khoá</p>";
+                        }
+                        else if(isset($count) && $count != 1){
                             echo "<p style = 'color :red'>Tài khoản hoặc mật khẩu không đúng</p>";
                         }
+                        
                     ?>
                     <button type="submit" name="submit">Đăng nhập</button>
                     <br>

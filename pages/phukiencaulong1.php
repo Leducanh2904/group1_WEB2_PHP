@@ -79,7 +79,7 @@ $maxProducts = 4;
             if ($i == $page) {
                 echo 'style="background: red;"';
             }
-            echo '><a href="votcaulong1.php?trang=' . $i . '">' . $i . '</a></button>';
+            echo '><a href="phukiencaulong1.php?trang=' . $i . '">' . $i . '</a></button>';
         }
         
         ?>

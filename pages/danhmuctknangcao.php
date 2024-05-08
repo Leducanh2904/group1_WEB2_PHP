@@ -9,8 +9,9 @@
 </head>
 
 <body onload="changAccountName()">
+
     <?php
-    include("../admin/config.php");
+    include("../pages/config.php");
     include("../pages/mainmenu2.php");
     $products_per_page = 4;
     if (isset($_GET['trang'])) {
@@ -54,7 +55,11 @@
     }
     ?>
     <div class="khungcacsanpham">
+    <div style="font-size: xx-large; margin-left: 70px; margin-top: 35px; margin-bottom: 30px;">
+        &nbsp; <a href="../pages/timkiemnangcao.php" style="font-size: large; color: blue;">Tìm kiếm nâng cao</a>
+    </div>
         <div class="khungsanphammoi">
+            
             <?php
             if (isset($result) && $result->num_rows > 0) {
                 echo "<div class='khungcacsanpham'>";

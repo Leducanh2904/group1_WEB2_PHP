@@ -89,7 +89,6 @@
             <td>Phân loại</td>
             <td style="width: 25%">Mô tả</td>
             <td>Thương hiệu</td>
-            <td>Số lượng</td>
             <td style=" text-align: center">Ảnh</td>
             <td style="width: 7%">Tình trạng</td>
             <td style=" text-align: center" colspan="2">Tính năng</td>
@@ -99,15 +98,15 @@
         <tbody>
           <?php
           while ($row = $result->fetch_assoc()) {
+            $formattedPrice = number_format($row['Price'], 0, ',', '.');
             if ($row['delPro'] == 1) {
               echo "<tr>";
               echo "<td>" . $row["ProductID"] . "</td>";
               echo "<td>" . $row["ProductName"] . "</td>";
-              echo "<td>" . $row["Price"] . "</td>";
+              echo "<td>" . $formattedPrice . "</td>";
               echo "<td>" . $row["Category"] . "</td>";
               echo "<td>" . $row["Description"] . "</td>";
               echo "<td>" . $row["Brand"] . "</td>";
-              echo "<td>" . $row["Quantity"] . "</td>";
               echo "<td><img src='../images/" . $row["ImageURL"] . "' alt='Product Image' width='100'></td>";
               if ($row['Status'] == 1) {
                 echo "<td>Còn hàng</td> ";
@@ -164,6 +163,7 @@
                             <option value="Vợt">Vợt cầu lông</option>
                             <option value="Giày">Giày cầu lông</option>
                             <option value="Quần Áo">Quần áo cầu lông</option>
+                            <option value="Phụ kiện">Phụ kiện cầu lông</option>
                           </select>
                           <p class="title1">Thương hiệu</p>
                           <select class="tsp" name="brand" required>

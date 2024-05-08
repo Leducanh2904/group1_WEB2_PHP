@@ -6,21 +6,22 @@
         $email = $_POST["email"];
         $password = $_POST["psw"];
         $phonenum = $_POST["phonenumb"];
-
-        $query ="INSERT INTO account (username, email, password, phone_number,fullName, address) VALUES('$name', '$email','$password','$phonenum') ";
-        mysqli_query($conn, $query);
-        echo
-        "
-        <script>
-            alert('Đăng kí thành công');
-        </script>
-        ";
+        $fullName = $_POST["fullName"];
+        $address = $_POST["address"];
+        $sql = "SELECT * FROM account WHERE username = '$name'";
+        $result = mysqli_query($conn, $sql);
+        $count = mysqli_num_rows($result);
+        if($count==0){
+            $query ="INSERT INTO account (username, email, password, phone_number,fullName,address, statusA) VALUES('$name', '$email','$password','$phonenum','$fullName','$address', 1) ";
+            mysqli_query($conn, $query);
+            header('Location: dangnhap.php');
+        }
         mysqli_close($conn);
     }
 ?>
 <!DOCTYPE html>
 
-<html>
+<html>  
 
 <head>
     <title>Đăng kí tài khoản</title>
@@ -55,6 +56,15 @@
                 <br>
                 <input type="password" placeholder="Nhập lại mật khẩu(*)" name="psw" id="password2"  required>
                 <br>
+                <input type="text" placeholder="Họ và Tên" name="fullName" id="hoTen" required>
+                <br>
+                <input type="text" placeholder="Địa Chỉ" name="address" id="diaChi" required>
+                <br>
+                <?php 
+                        if(isset($count) && $count != 0){
+                            echo "<p style = 'color :red'>Tài khoản đã tồn tại, vui lòng đăng kí lại</p>";
+                        }
+                    ?>
                 <button type="submit" name="submit">Đăng kí</button>
                 <p style="color:black;">Đã có tài khoản, đăng nhập   <a href="../pages/dangnhap.php" style="color: orangered;">tại đây</a> </p>
             </div>
@@ -69,6 +79,7 @@
                 }
                 else{
                     alert("Đăng kí thành công, vui lòng đăng nhập lại")
+                    window.location.href = "dangnhap.php";
                 };
                 
             }

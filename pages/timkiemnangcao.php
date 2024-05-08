@@ -13,7 +13,7 @@
 
 <body onload="changAccountName()">
     <?php
-    include("../admin/config.php");
+    include("../pages/config.php");
     include("../pages/mainmenu2.php");
     ?>
     <div class="khungtimkiem">
@@ -28,7 +28,6 @@
                 <option value="null">Tất cả</option>
                 <option value="Vợt">Vợt cầu lông</option>
                 <option value="Giày">Giày cầu lông</option>
-                <option value="Balo">Balo, túi cầu lông</option>
                 <option value="Phụ kiên">Phụ kiện cầu lông</option>
                 <option value="Quần áo">Quần áo cầu lông</option>
             </select>

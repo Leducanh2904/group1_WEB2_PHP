@@ -4,6 +4,10 @@ $proID = $_POST['change'];
 $sql1 = "SELECT * FROM products WHERE ProductID = '$proID'";
 $result = mysqli_query($conn, $sql1);
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+$image = $row['ImageURL'];
+
+echo $image;
 if (isset($_POST['submit1'])) {
     $proID1 = $_POST['proID'];
     $proName = $_POST['proName'];
@@ -11,16 +15,21 @@ if (isset($_POST['submit1'])) {
     $type = $_POST['type'];
     $brand = $_POST['brand'];
     $description = $_POST['description'];
-    $image = $row['ImageURL'];
-    echo $image;
     if(isset($_POST['image']) && ($_POST['image'] != "")){
-        //$image = $_POST['image'];
-    }
-    $sql3 = "UPDATE products 
+        $image = $_POST['image'];
+        echo 'true image';
+        $sql3 = "UPDATE products 
             SET ProductName = '$proName', Price = '$price', Category = '$type', Brand = '$brand', Description = '$description', ImageURL = '$image'
             WHERE ProductID = '$proID1' ";
+    }
+    else{
+        $sql3 = "UPDATE products 
+            SET ProductName = '$proName', Price = '$price', Category = '$type', Brand = '$brand', Description = '$description'
+            WHERE ProductID = '$proID1' ";
+        echo 'false';
+    }
     $result3 = mysqli_query($conn, $sql3);
-    //header('Location: quanlisanpham.php');
+    header('Location: quanlisanpham.php');
   }
   mysqli_close($conn)
 
@@ -57,12 +66,12 @@ if (isset($_POST['submit1'])) {
         <!-- Bảng chỉnh sửa thông tin mới -->
         <div class="table-container">
             <h2>Thông tin cần cập nhật</h2> <br>
-            <form name="frm" method="post" onsubmit="alert('Thêm thành công')">
+            <form name="frm" method="post" onsubmit="alert('Chỉnh sửa thành công')">
                 <div>
                     <p class="title1">Tên sản phẩm</p>
                     <input class="tsp" type="text" name="proName" value="<?php echo $row['ProductName']?>" required />
                     <p class="title1">Mã sản phẩm</p>
-                    <input class="tsp" type="text" name="proID" value="<?php echo $row['ProductID']?>" required />
+                    <input class="tsp" type="text" name="proID" value="<?php echo $row['ProductID']?>" readonly />
                     <p class="title1">Giá</p>
                     <input class="tsp" type="text" name="price" value="<?php echo $row['Price']?>" style="margin-bottom: -10px" required />
                 </div>
@@ -88,11 +97,6 @@ if (isset($_POST['submit1'])) {
                                     echo 'selected';
                                 }
                             ?>>Quần áo cầu lông</option>
-                            <option value="Phụ kiện" <?php
-                                if($row['Category'] == 'Phụ kiện'){
-                                    echo 'selected';
-                                }
-                            ?>>Phụ kiện cầu lông</option>
                         </select>
                         <p class="title1">Thương hiệu</p>
                         <select class="tsp" name="brand" required>

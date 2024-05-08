@@ -9,15 +9,7 @@
             </a>
           </li>
 
-          <li>
-            <a href="../admin/admin.php">
-              <span class="icon">
-                <ion-icon name="home-outline"></ion-icon>
-              </span>
-
-              <span class="title">Trang chủ</span>
-            </a>
-          </li>
+          
 <li>
                     <a href="../pages/quanlisanpham.php">
                         <span class="icon">
@@ -53,5 +45,17 @@
                         <span class="title">Thống kê</span>
                     </a>
                 </li>
+                <li>
+                  <?php 
+                  ?>
+                    <a href="../pages/LogOutadmin.php">
+                        <span class="icon">
+                        <ion-icon name="log-in-outline"></ion-icon>
+                        </span>
+                        <span class="title">Đăng xuất</span>
+                    </a>
+                </li>
+
+                
                 </ul>
       </div>

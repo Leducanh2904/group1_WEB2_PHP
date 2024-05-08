@@ -5,7 +5,6 @@ if (!isset($_SESSION['cart'])) {
 }
 
 include("connection.php");
-include("../admin/config.php");
 
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $productID = $_GET['id'];
@@ -101,29 +100,14 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                                             ƯU ĐÃI
                                         </legend>
                                         <div class="product-promotions-list-content">
-                                            <?php echo $row['Promotion']; ?>
+                                        <p>✔  Tặng 2 Quấn cán vợt Cầu Lông: <a>Felet Over</a>, VS002 hoặc Joto 001</p>
+                                        <p>✔ Sản phẩm cam kết chính hãng</p>
+                                        <p>✔ Tặng bao đơn hoặc bao nhung bảo vệ vợt</p>
+					
                                         </div>
                                     </fieldset>
                                     <br>
-                                    <?php
-                                        $sizes = explode(", ", $row['Size']);
-                                        if (!empty($sizes)) {
-                                            echo '<div class="form-product">';
-                                            echo '<div class="select-swatch">';
-                                            echo '<div class="swatch clearfix" data-option-index="0">';
-                                            echo '<div class="header12">Chọn size:</div> <br>';
-                                            echo '<select name="size">';
-                                            foreach ($sizes as $size) {
-                                                echo "<option value='" . $size . "'>" . $size . "</option>";
-                                            }
-                                            echo '</select>';
-                                            echo '</div>';
-                                            echo '</div>';
-                                            echo '</div>';
-                                        } else {
-                                            echo "Không có size nào được tìm thấy.";
-                                        }
-                                        ?>
+                                    <br>
                                     <style>
                                     .header12 {
                                         font-size: 20px;
@@ -147,29 +131,11 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                                         <div class="clearfix form-group">
                                             <div class="flex-quantity">
                                                 <div class="btn-mua button_actions clearfix">
-                                                    <?php
-                                                    if (!empty($sizes)) {
-                                                        echo '
+                                                    
                                                         <form method="post">
                                                         <button type="submit" name="addToCart" class="btn_base">Thêm vào giỏ hàng</button>
-                                                        </form>';
-                                                    } else {
-                                                        echo 'Không có size nào được chọn.';
-                                                    }
-                                                    ?>
-                                                    <script>
-                                                    function addToCart() {
-                                                        var selectedSize = document.querySelector('select[name="size"]')
-                                                            .value;
-                                                        if (selectedSize === '') {
-                                                            alert(
-                                                                'Vui lòng chọn kích thước trước khi thêm vào giỏ hàng.'
-                                                            );
-                                                        } else {
-                                                            window.location.href = '../pages/giohang.php';
-                                                        }
-                                                    }
-                                                    </script>
+                                                        </form>
+                                                        <br>
                                                 </div>
                                             </div>
                                         </div>

@@ -55,7 +55,7 @@ include("../pages/mainmenu1.php");
     <div class="ctrang">
     <?php 
         include("connection.php");
-        $sql_trang = mysqli_query($conn,"SELECT * FROM products where Category ='Quần áo'");
+        $sql_trang = mysqli_query($conn,"SELECT * FROM products where Category ='Giày'");
         $row_count = mysqli_num_rows($sql_trang);
         $trang = ceil($row_count/4);
         ?>

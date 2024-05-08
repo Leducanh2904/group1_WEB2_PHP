@@ -7,7 +7,7 @@
         $password = $_POST["psw"];
         $phonenum = $_POST["phonenumb"];
 
-        $query ="INSERT INTO sign_up (User_name, Email, Password, Phone_number) VALUES('$name', '$email','$password','$phonenum') ";
+        $query ="INSERT INTO account (username, email, password, phone_number,fullName, address) VALUES('$name', '$email','$password','$phonenum') ";
         mysqli_query($conn, $query);
         echo
         "

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/styleTLWeb1.css">
     <link rel="stylesheet" href="../css/carousel.css">
     <link rel="stylesheet" href="../css/test.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.css">
 </head>
 
 <body onload="changAccountName()">
@@ -24,15 +25,17 @@
 
             <label for="search">Chọn loại sản phẩm</label>
             <select id="chonsanpham" name="phanloai" style="margin-top: 8px;" required>
+                <option value="null">Tất cả</option>
                 <option value="Vợt">Vợt cầu lông</option>
                 <option value="Giày">Giày cầu lông</option>
                 <option value="Balo">Balo, túi cầu lông</option>
-                <option value="Phụkiên">Phụ kiện cầu lông</option>
-                <option value="Quầnáo">Quần áo cầu lông</option>
+                <option value="Phụ kiên">Phụ kiện cầu lông</option>
+                <option value="Quần áo">Quần áo cầu lông</option>
             </select>
             <br> <br>
             <label for="brand">Thương hiệu</label>
             <select name="thuonghieu" id="chonthuonghieu" style="margin-top: 8px;" required>
+                <option value="null">Tất cả</option>
                 <option value="Yonex">Yonex</option>
                 <option value="Lining">Lining</option>
                 <option value="Sunbata">Sunbata</option>
@@ -42,22 +45,47 @@
             </select>
             <br> <br> <br>
             <div class="price-range-container">
-                <div> <label for="price"><b style="font-size: large;">Mức giá</b> </label></div>
-
-                <input type="range" id="price" name="price" min="0" max="100" step="1" value="5"
-                    oninput="updatePriceValue(this.value)">
-                <span id="price-display">5 <b>đ</b></span>
+                <div>
+                    <label for="price"><b style="font-size: large;">Mức giá</b> </label>
+                </div>
+                <div id="price"></div>
+                <span id="price-min-display">0 <b>đ</b></span>
+                <span id="price-max-display">5,000,000 <b>đ</b></span>
+                <input type="hidden" id="price-min" name="price_min">
+                <input type="hidden" id="price-max" name="price_max">
             </div>
             <button class="custom-button" type="submit">Tìm</button>
         </form>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.js"></script>
     <script>
-    function updatePriceValue(value) {
-        document.getElementById('price-display').textContent = formatCurrency(value);
-    }
+    var priceSlider = document.getElementById('price');
+    var priceMin = document.getElementById('price-min');
+    var priceMax = document.getElementById('price-max');
+    var priceMinDisplay = document.getElementById('price-min-display');
+    var priceMaxDisplay = document.getElementById('price-max-display');
+
+    noUiSlider.create(priceSlider, {
+        start: [0, 5000000],
+        connect: true,
+        step: 500000,
+        range: {
+            'min': 0,
+            'max': 15000000
+        }
+    });
+    priceSlider.noUiSlider.on('update', function(values, handle) {
+        var value = values[handle];
+        if (handle) {
+            priceMax.value = value;
+            priceMaxDisplay.textContent = formatCurrency(value);
+        } else {
+            priceMin.value = value;
+            priceMinDisplay.textContent = formatCurrency(value);
+        }
+    });
 
     function formatCurrency(amount) {
-        // Sử dụng biểu thức chính quy để chèn dấu phẩy vào giữa mỗi ba chữ số
         return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '₫';
     }
     </script>

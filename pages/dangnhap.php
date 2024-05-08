@@ -3,21 +3,30 @@
     if(isset($_POST["submit"])){
     $name = $_POST["uname"];
     $password = $_POST["psw"];
-    $sql = "SELECT * FROM sign_up WHERE User_name = '$name' AND Password = '$password";
+    $sql = "SELECT * FROM account WHERE username = '$name' AND password = '$password' ";
     $result = mysqli_query($conn, $sql);
-    if(mysqli_num_rows($result) > 0){
-        echo"login success";
-    }
-    else{
-        echo"login failure";
+    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+    $count = mysqli_num_rows($result);
+    
+    if($count==1){
+        echo"
+            <script>
+            window.location.href = 'taikhoan.php';
+            </script>
+        ";
+        $cookie_name = "user";
+        // $row2 = $result2->fetch_assoc();
+        $cookie_value = $row["fullName"];
+        setcookie($cookie_name, $cookie_value,time() + (86400 * 30), "/");
     }
     mysqli_close($conn);
-}
+    }
 ?>
+
+
 <!DOCTYPE html>
 
 <html lang="en">
-
 <head>
     <title>Đăng nhập tài khoản</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
@@ -28,7 +37,7 @@
 
 <body>
     <?php
-    include("../pages/mainmenu2.php");
+        include("../pages/mainmenu2.php");
     ?>
     <div  class="khungdangnhap">
         <form class="form1" method="post" autocomplete="off">
@@ -36,18 +45,21 @@
                 <img src="../images/logodangnhap.png" alt="Avatar" class="avatar">
                 <p> <b style="font-size: x-large; color: orangered;">ĐĂNG NHẬP</b></p>
             </div>
-            
 
             <div class="container">
-                <form></form>
                     <input type="text" placeholder="Tên tài khoản" name="uname" id="username" required>
                     <br>
                     <input type="password" placeholder="Mật khẩu" name="psw" id="password" required>
                     <br>
-                    <button type="submit">Đăng nhập</button>
+                    <?php 
+                        if(isset($count) && $count !=1){
+                            echo "<p style = 'color :red'>Tài khoản hoặc mật khẩu không đúng</p>";
+                        }
+                    ?>
+                    <button type="submit" name="submit">Đăng nhập</button>
                     <br>
                     <input type="checkbox" checked="checked" name="remember"> Ghi nhớ tài khoản
-                </form>
+                
             </div>
             <div class="container" style="background-color:#f1f1f1; text-align: center;" >
                 <span >Quên mật khẩu?</a></span>
@@ -55,6 +67,7 @@
                 <!-- <p style="color:black;"> Đăng nhập bằng tư cách quản trị viên <a href="admin.html" style="color: orangered;">tại đây</a> </p> -->
             </div>
         </form>
+        
     </div>
     <?php
     include("../pages/footer.php");

@@ -1,3 +1,27 @@
+<?php 
+    include('connection.php');
+    $uname = $_POST['uname1'];
+    $sql1 = "SELECT * FROM account WHERE username = '$uname'";
+    $result = mysqli_query($conn, $sql1);
+    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+    echo $uname;
+    if(isset($_POST['submit1'])){
+        $uname2 = $_POST['username']; 
+        $fullName = $_POST['fullName'];
+        $email = $_POST['email'];
+        $psw = $_POST['psw'];
+        $address = $_POST['address'];
+        $phoneNum = $_POST['phone'];
+        $sql2 = "UPDATE account 
+                 SET fullName ='$fullName', email = '$email', password='$psw', address='$address', phone_number='$phoneNum' 
+                 WHERE username = '$uname2' ";
+        $result1 = mysqli_query($conn, $sql2);
+        mysqli_close($conn);
+        header('Location: quanlitaikhoan.php');
+    }
+    
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,46 +55,43 @@
                     <h2>Thông tin ban đầu</h2> <br>
                     <form id="initialInfoForm">
                         <label for="originalName">Họ và tên:</label>
-                        <input type="text" id="originalName" name="originalName" value="Lê Đức Anh">
+                        <input type="text" id="originalName" name="originalName" value="<?php echo $row['fullName']?>" readonly>
                         <label for="username">Tài khoản:</label>
-            <input type="text" id="username" name="username" required value="ldanhsguk22">
-
-            <label for="password">Mật khẩu:</label>
-            <input type="text" id="password" name="password" required value="leducanhdeptrai">
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required value="ldanhsguk22@gmail.com">
-
-            <label for="phone">Số điện thoại:</label>
-            <input type="tel" id="phone" name="phone" required value="0364655945">
+                        <input type="text" id="username" required value="<?php echo $row['username']?>" readonly>
+                        <label for="password">Mật khẩu:</label>
+                        <input type="text" id="password" required value="<?php echo $row['password']?>" readonly>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" required value="<?php echo $row['email']?>" readonly>
+                        <label for="phone">Số điện thoại:</label>
+                        <input type="text" id="phone" required value="<?php echo $row['phone_number']?>" readonly>
+                        <label for="address">Địa chỉ:</label>
+                        <input type="text" id="phone" required value="<?php echo $row['address']?>" readonly>
                         <!-- Thêm các trường thông tin khác cần nhập -->
         
                     </form>
                 </div>
-        
-                <!-- Nút lưu chỉnh sửa -->
-                
-               <a class="img" href="" onclick="alert('Chỉnh sửa thành công ')"> <img src="../images/change.png" alt="chuyen doi"> </a>
-        
                 <!-- Bảng chỉnh sửa thông tin mới -->
                 <div class="table-container">
                     <h2>Thông tin cần cập nhật</h2> <br>    
-                    <form id="editInfoForm">
+                    <form id="editInfoForm" method="post" autocomplete="off">
                         <label for="editedName">Họ và tên:</label>
-                        <input type="text" id="editedName" name="editedName" required placeholder="Họ và tên">
+                        <input type="text" id="editedName" name="fullName" value="<?php echo $row['fullName']?>" required placeholder="Họ và tên">
                         <label for="username">Tài khoản:</label>
-                        <input type="text" id="username" name="username" required placeholder="Tài khoản">
+                        <input type="text" id="username" name="username" value="<?php echo $row['username']?>" required placeholder="Tài khoản" readonly>
             
-                        <label for="password">Mật khẩu:</label>
-                        <input type="password" id="password" name="password" required placeholder="Mật khẩu">
+                        <label for="psw">Mật khẩu:</label>
+                        <input type="text" id="password" name="psw" value="<?php echo $row['password']?>" required placeholder="Mật khẩu">
             
                         <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required placeholder="Email">
+                        <input type="text" id="email" name="email" value="<?php echo $row['email']?>" required placeholder="Email">
             
                         <label for="phone">Số điện thoại:</label>
-                        <input type="tel" id="phone" name="phone" required placeholder="Số điện thoại">
+                        <input type="text" id="phone" name="phone" value="<?php echo $row['phone_number']?>" required placeholder="Số điện thoại">
+
+                        <label for="address">Địa chỉ:</label>
+                        <input type="text" id="phone" name="address" value="<?php echo $row['address']?>" required placeholder="Địa chỉ">
                         <!-- Thêm các trường thông tin khác cần chỉnh sửa -->
-        
+                        <button class="saveBtn1" type="submit" name="submit1"> Lưu chỉnh sửa </button>
                     </form>
                 </div>
             </div>

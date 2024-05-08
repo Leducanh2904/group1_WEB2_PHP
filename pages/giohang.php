@@ -1,7 +1,7 @@
 <?php
+
 session_start(); // Bắt đầu session
 
-include("../pages/mainmenu2.php");
 
 // Xử lý yêu cầu xóa sản phẩm nếu có
 if (isset($_GET['remove'])) {
@@ -10,12 +10,31 @@ if (isset($_GET['remove'])) {
     if (isset($_SESSION['cart'][$removeProductId])) {
         // Xóa sản phẩm khỏi giỏ hàng
         unset($_SESSION['cart'][$removeProductId]);
-        // Không cần chuyển hướng trở lại trang giỏ hàng, chỉ cần xóa sản phẩm trong session
+        exit(); // Kết thúc kịch bản PHP
+    }
+}
+
+// Xử lý yêu cầu cập nhật số lượng sản phẩm
+if (isset($_GET['update'])) {
+    $updateProductId = $_GET['update'];
+    $newQuantity = $_GET['quantity'];
+    // Kiểm tra xem sản phẩm cần cập nhật có tồn tại trong giỏ hàng không
+    if (isset($_SESSION['cart'][$updateProductId])) {
+        // Cập nhật số lượng sản phẩm
+        $_SESSION['cart'][$updateProductId]['Quantity'] = $newQuantity;
+        // Tính lại tổng tiền
+        $totalPrice = 0;
+        foreach ($_SESSION['cart'] as $product) {
+            $totalPrice += $product['Price'] * $product['Quantity'];
+        }
+        echo number_format($totalPrice, 0, ',', '.') . ' ₫'; // Trả về tổng tiền mới
         exit(); // Kết thúc kịch bản PHP
     }
 }
 ?>
-
+<?php
+include("../pages/mainmenu2.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,8 +44,8 @@ if (isset($_GET['remove'])) {
     <title>Giỏ hàng</title>
     <link rel="stylesheet" href="../css/styleTLWeb1.css">
     <link rel="stylesheet" href="../css/giohang.css">
-    <script src="../js/function.js"></script>
     <style>
+    /* Đặt CSS tại đây */
     .product-container {
         display: flex;
         flex-direction: column;
@@ -61,17 +80,27 @@ if (isset($_GET['remove'])) {
         margin: 0;
     }
 
-    .product button {
-        background-color: #ff6347;
-        color: white;
+    .quantity-selector {
+        display: flex;
+        align-items: center;
+    }
+
+    .quantity-selector input[type="number"] {
+        width: 60px;
+        text-align: center;
+    }
+
+    .quantity-selector button {
+        background-color: #ccc;
+        color: #333;
         border: none;
         padding: 5px 10px;
         border-radius: 5px;
         cursor: pointer;
     }
 
-    .product button:hover {
-        background-color: #ff7f50;
+    .quantity-selector button:hover {
+        background-color: #aaa;
     }
     </style>
 </head>
@@ -79,35 +108,14 @@ if (isset($_GET['remove'])) {
 <body>
     <div>
         <div class="khunggiohang1">
-        <style>
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-    
-    th, td {
-        padding: 8px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
-    }
-    .Thaotac td
-    {
-        margin-left: 190px;
-    }
-
-    /* Tùy chỉnh khoảng cách giữa các cột */
-    td {
-        padding-right: 20px; /* Chỉnh khoảng cách bên phải */
-    }
-</style>
-           <table>
-            <tr>
-                <td>Ảnh sản phẩm</td>
-                <td>Tên sản phẩm</td>
-                <td>Giá</td>
-                <td class="Thaotac">Thao tác</td>
-            </tr>
-           </table>
+            <table>
+                <tr>
+                    <th>Ảnh sản phẩm</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                </tr>
+            </table>
         </div>
         <div class="khunggiohang3">
             <?php
@@ -115,15 +123,23 @@ if (isset($_GET['remove'])) {
                 foreach ($_SESSION['cart'] as $productId => $product) {
                     if (is_array($product)) {
                         echo '<div class="product-container">';
-                        echo '<div class="product" id="product_' . $productId . '">';
-                        echo '<img src="../images/' . $product['ImageURL'] . '" alt="' . $product['ProductName'] . '">';
-                        echo '<div class="product-info">';
+echo '<div class="product" id="product_' . $productId . '">';
+echo '<img src="../images/' . $product['ImageURL'] . '" alt="' . $product['ProductName'] . '">';
+
+echo '<div class="product-info">';
                         echo '<h3 style= "margin-left: 190px">' . $product['ProductName'] . '</h3>';
                         echo '</div>'; // Đóng product-info
                         echo '<p style = "margin-right: 310px;">Giá: ' . number_format($product['Price'], 0, ',', '.') . '₫</p>';
-                        echo '<button onclick="removeFromCart(' . $productId . ')">Xóa sản phẩm</button>';
-                        echo '</div>'; // Đóng product
-                        echo '</div>'; // Đóng product-container
+
+echo '<div class="quantity-selector">';
+echo '<input type="number" id="quantity_' . $productId . '" name="quantity" value="' . $product['Quantity'] . '" min="1" onchange="updateQuantity(' . $productId . ', this.value)">';
+echo '</div>'; // Đóng quantity-selector
+
+echo '<button onclick="removeFromCart(' . $productId . ')">Xóa sản phẩm</button>';
+echo '</div>'; // Đóng product
+echo '</div>'; // Đóng product-container
+
+
                     } else {
                         echo "Lỗi: Dữ liệu sản phẩm không hợp lệ.";
                     }
@@ -138,38 +154,64 @@ if (isset($_GET['remove'])) {
                 <div class="giohanggiatext2">
                     <b>TỔNG TIỀN:</b>
                 </div>
-                <div class="giohanggiatext1">
+                <div class="giohanggiatext1" id="totalPrice">
                     <?php
                     if (isset($_SESSION['cart']) && is_array($_SESSION['cart']) && !empty($_SESSION['cart'])) {
-                        $totalPrice = array_sum(array_column($_SESSION['cart'], 'Price'));
-                        echo '<b>' . number_format($totalPrice, 0, ',', '.') . ' ₫</b>';
+                        $totalPrice = 0;
+                        foreach ($_SESSION['cart'] as $product) {
+                            $totalPrice += $product['Price'] * $product['Quantity'];
+                        }
+                        echo number_format($totalPrice, 0, ',', '.') . ' ₫';
                     } else {
-                        echo '<b>0 ₫</b>';
+                        echo '0 ₫';
                     }
                     ?>
                 </div>
             </div>
             <div class="khunggiohang4">
-                <a href="../pages/thanhtoan.php">
-                    <p class="my-element" style="margin-top: -0px;">ĐẶT HÀNG</p>
-                </a>
+                <?php
+                // Kiểm tra xem giỏ hàng có sản phẩm hay không
+                if (isset($_SESSION['cart']) && is_array($_SESSION['cart']) && !empty($_SESSION['cart'])) {
+                    // Nếu có sản phẩm trong giỏ hàng, hiển thị nút "ĐẶT HÀNG" và chuyển hướng đến trang thanhtoan.php
+                    echo '<a href="../pages/thanhtoan.php">';
+                    echo '<p class="my-element" style="margin-top: -0px;">ĐẶT HÀNG</p>';
+                    echo '</a>';
+                } else {
+                    // Nếu không có sản phẩm trong giỏ hàng, hiển thị thông báo
+                    echo '<p class="my-element" style="margin-top: -0px;">KHÔNG CÓ SẢN PHẢM TRONG GIỎ HÀNG.</p>';
+                }
+                ?>
             </div>
         </div>
     </div>
 
     <script>
-    function removeFromCart(productId) {
-        // Xóa sản phẩm khỏi DOM
-        var productElement = document.getElementById("product_" + productId);
-        productElement.parentNode.removeChild(productElement);
+    // Function to update quantity of a product in the cart
+    function updateQuantity(productId, newQuantity) {
+        // Send AJAX request to update quantity
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "giohang.php?update=" + productId + "&quantity=" + newQuantity, true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                // Update total price after successfully updating quantity
+                document.getElementById("totalPrice").innerHTML = xhr.responseText;
+            }
+        };
+        xhr.send();
+    }
 
-        // Gửi yêu cầu xóa sản phẩm đến server bằng AJAX
+    // Function to remove product from cart
+    function removeFromCart(productId) {
+        // Send AJAX request to remove product from cart
         var xhr = new XMLHttpRequest();
         xhr.open("GET", "giohang.php?remove=" + productId, true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                // Reload the page or update the cart view as desired
+                location.reload(); // Reload the page after removing the product
+            }
+        };
         xhr.send();
-
-        // Tải lại trang sau khi xóa sản phẩm
-        location.reload();
     }
     </script>
 </body>

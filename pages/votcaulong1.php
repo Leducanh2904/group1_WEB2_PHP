@@ -42,8 +42,8 @@ $maxProducts = 4;
     <div class="khungcacsanpham">
         <div class="khungsanphammoi">
             <?php
-           
             while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                if ($row['delPro'] == 1){
                 if ($row['Category'] === 'Vợt') {
                     if ($count < $maxProducts) { 
                 echo '<div class="sanpham">';
@@ -61,11 +61,10 @@ $maxProducts = 4;
             }
         }
     }
+    }
             ?>
         </div>
     </div>
-
-    
      <div class="footer_end">
     <div class ="ctrang">
         <?php 

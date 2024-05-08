@@ -22,7 +22,9 @@ if (mysqli_num_rows($result) > 0) {
     // Duyệt qua từng dòng dữ liệu và tạo HTML cho mỗi sản phẩm
     while ($row = mysqli_fetch_assoc($result)) {
         // Hiển thị chỉ 4 sản phẩm đầu tiên
+        if ($row['delPro'] == 1){
         if ($count < 4) {
+            
             ?>
             <div class="container">
                 <img src="../images/<?php echo $row['ImageURL']; ?>" alt="<?php echo $row['ProductName']; ?>" class="image">
@@ -38,6 +40,7 @@ if (mysqli_num_rows($result) > 0) {
             break;
         }
     }
+}
 } else {
     // Xử lý khi không có sản phẩm nào được tìm thấy
     echo "Không có sản phẩm nào.";

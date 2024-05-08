@@ -16,7 +16,7 @@ else
     $begin = ($page*4) - 4;
 }
 
-$sql = "SELECT * FROM products order by ProductID DESC limit $begin,5";
+$sql = "SELECT * FROM products WHERE Category = 'Quần áo' order by ProductID DESC limit $begin,5";
 $result = mysqli_query($conn, $sql);
 $count = 0;
 $maxProducts = 4;
@@ -43,6 +43,7 @@ mysqli_close($conn);
             <?php
             while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                 if ($row['Category'] === 'Quần áo') {
+                    if ($row['delPro'] == 1){
                     if ($count < $maxProducts) { 
                 echo '<div class="sanpham">';
                 echo '<a href="../pages/chitiet100zz.php?id='.$row['ProductID'].'"><img src="../images/'.$row['ImageURL'].'" alt="'.$row['ProductName'].'"></a>';
@@ -57,7 +58,7 @@ mysqli_close($conn);
             {
                 break;
             }
-        }
+        }}
     }
             ?>
         </div>

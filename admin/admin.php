@@ -28,52 +28,7 @@
         <?php 
                 include ("../pages/mainadmin.php");
                 ?>
-            <!-- ======================= Cards ================== -->
-            <div class="cardBox">
-                <div class="card">
-                    <div>
-                        <div class="numbers">891,890</div>
-                        <div class="cardName">Lượt xem</div>
-                    </div>
-
-                    <div class="iconBx">
-                        <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <div class="numbers">30,129</div>
-                        <div class="cardName">Lượt chia sẻ</div>
-                    </div>
-
-                    <div class="iconBx">
-                        <ion-icon name="pricetags-outline"></ion-icon>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <div class="numbers">5,449</div>
-                        <div class="cardName">Bình luận</div>
-                    </div>
-
-                    <div class="iconBx">
-                        <ion-icon name="chatbubbles-outline"></ion-icon>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <div class="numbers">1.320.241.300 </div>
-                        <div class="cardName">Doanh số đã thu về </div>
-                    </div>
-
-                    <div class="iconBx">
-                        <ion-icon name="cash-outline"></ion-icon>
-                    </div>
-                </div>
-            </div>
+            
 
             <!-- ================ Order Details List ================= -->
             <div class="details">

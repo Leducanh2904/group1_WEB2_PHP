@@ -1,211 +1,219 @@
- <!-- Modal content -->
- <div id="myModal" class="modal">
- <div class="modal-content">
-                        <div class="modal-header">
-                          <span class="close">&times;</span>
-                          <h2 style="text-align: center">Chỉnh sửa sản phẩm</h2>
-                        </div>
-                        <div class="modal-body">
-                          <div class="row">
-                            <div
-                              class="column"
-                              style="margin-right: -20px; margin-left: 10px"
-                            >
-                            <form name="frm1" onsubmit="alert('Chỉnh sửa thành công')">
-                              <div>
-                                <p class="title1">Tên sản phẩm</p>
-                                <input
-                                  class="tsp"
-                                  type="text"
-                                  value="Vợt Cầu Lông Yonex Astrox 100ZZ China Limited"
-                                  required
-                                />
-                                <p class="title1">Mã sản phẩm</p>
-                                <input
-                                  class="tsp"
-                                  type="text"
-                                  value="VNB017045"
-                                  required
-                                />
-                                <p class="title1">Giá</p>
-                                <input
-                                  class="tsp"
-                                  type="number"
-                                  value="9700000"
-                                  style="margin-bottom: -10px"
-                                  required
-                                />
-                              </div>
+<?php
+include('connection.php');
+$proID = $_POST['change'];
+$sql1 = "SELECT * FROM products WHERE ProductID = '$proID'";
+$result = mysqli_query($conn, $sql1);
+$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+if (isset($_POST['submit1'])) {
+    $proID1 = $_POST['proID'];
+    $proName = $_POST['proName'];
+    $price = $_POST['price'];
+    $type = $_POST['type'];
+    $brand = $_POST['brand'];
+    $description = $_POST['description'];
+    $image = $row['ImageURL'];
+    echo $image;
+    if(isset($_POST['image']) && ($_POST['image'] != "")){
+        //$image = $_POST['image'];
+    }
+    $sql3 = "UPDATE products 
+            SET ProductName = '$proName', Price = '$price', Category = '$type', Brand = '$brand', Description = '$description', ImageURL = '$image'
+            WHERE ProductID = '$proID1' ";
+    $result3 = mysqli_query($conn, $sql3);
+    //header('Location: quanlisanpham.php');
+  }
+  mysqli_close($conn)
 
-                              <div
-                                style="
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chỉnh sửa tài khoản</title>
+    <!-- ======= Styles ====== -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+    <!-- =============== Navigation ================ -->
+    <?php
+    include("../pages/taskbar.php");
+    ?>
+    <!-- ========================= Main ==================== -->
+    <?php
+    include("../pages/mainadmin.php");
+    ?>
+
+    <!-- ================ chinh sua tai day ================= -->
+
+    <div class="div1">
+        <!-- Bảng chỉnh sửa thông tin mới -->
+        <div class="table-container">
+            <h2>Thông tin cần cập nhật</h2> <br>
+            <form name="frm" method="post" onsubmit="alert('Thêm thành công')">
+                <div>
+                    <p class="title1">Tên sản phẩm</p>
+                    <input class="tsp" type="text" name="proName" value="<?php echo $row['ProductName']?>" required />
+                    <p class="title1">Mã sản phẩm</p>
+                    <input class="tsp" type="text" name="proID" value="<?php echo $row['ProductID']?>" required />
+                    <p class="title1">Giá</p>
+                    <input class="tsp" type="text" name="price" value="<?php echo $row['Price']?>" style="margin-bottom: -10px" required />
+                </div>
+                <div style="
                                   margin-top: 30px;
-                                  border-top: 1px dashed rgb(238, 227, 227);
-                                "
-                              >
-                                <div style="margin-top: 20px">
-                                  <p class="title1">Phân loại</p>
-                                  <select name="loaisanpham1" id="loaisanpham1" class="tsp" onchange="changeSize('loaisanpham1','sizeVot1','sizeGiay1','sizeQuanAo1','sizeBalo1')">
-                                    <option value="vot">Vợt cầu lông</option>
-                                    <option value="giay">Giày cầu lông</option>
-                                    <option value="quanao">Quần áo cầu lông</option>
-                                    <option value="balo">Balo cầu lông</option>
-                                    <option value="phukien">Phụ kiện cầu lông</option>
-                                  </select>
-                                  <p class="title1">Thương hiệu</p>
-                                  <select class="tsp" required>
-                                    <option value="Yonex">Yonex</option>
-                                    <option value="Lining">Lining</option>
-                                    <option value="Victor">Victor</option>
-                                    <option value="Apacs">Apacs</option>
-                                  </select>
-                                  <p class="title1">Size</p>
-                                  <select class="tsp" name="sizeVot" id="sizeVot1" required>
-                                    <option value="Yonex">2U</option>
-                                    <option value="Lining">3U</option>
-                                    <option value="Victor">4U</option>
-                                    <option value="Apacs">5U</option>
-                                  </select>
-                                  <input type="number" name="sizeGiay" id="sizeGiay1" class="tsp"  style="display: none;" min="36" max="48"  value="36" required>
-                                  <select class="tsp" name="sizeQuanAo" id="sizeQuanAo1" style="display: none;" required>
-                                    <option value="Yonex">S</option>
-                                    <option value="Lining">M</option>
-                                    <option value="Victor">L</option>
-                                    <option value="Apacs">XL</option>
-                                  </select>
-                                  <div style="margin-bottom: 10px;">
-                                    <span id="sizeBalo1" style="display: none;"> &nbsp;&nbsp;&nbsp; Free Size</span>
-                                  </div>
-                                  <p class="title1">Tình trạng</p>
-                                  <select name id class="tsp">
-                                    <option value>Còn hàng</option>
-                                    <option value>Hết hàng</option>
-                                  </select>
-                                </div>
-                              </div>
-                              <br />
-                            </div>
-                            <div
-                              class="column"
-                              style="
-                                background-color: rgb(255, 255, 255);
-                                border-left: 1px dashed rgb(238, 228, 228);
-                              "
-                            >
-                              <div style="margin-left: 30px">
-                                <p>Mô tả sản phẩm</p>
-                                <textarea
-                                  rows="10"
-                                  cols="58"
-                                  required
-                                  placeholder="Mô tả chi tiết sản phẩm: "
-                                >Vợt cầu lông Yonex Astrox 100ZZ China Limited (Nội Địa Trung) là phiên bản giới hạn được mong chờ nhất năm 2023 với màu sắc hoàn toàn mới, đem lại những trải nghiệm tuyệt vời cho người chơi, được nhiều VĐV trên thế giới hàng đầu tin dùng và đạt được nhiều thành công lớn, tiêu biểu là tay vợt nam nổi tiếng Axelsen.
-
-Theo đánh giá mới nhất về các cây vợt Astrox trong Astrox Series, Astrox 100 ZX và Astrox 100 ZZ có điểm cân bằng là nặng đầu nhất và cứng nhất, gần như những gì tốt nhất đang được tập trung trên 2 siêu phẩm này.
-Vẫn là những hoạ tiết quen thuộc trên các phiên bản cũ, tuy nhiên ở phiên bản Yonex Astrox 100ZZ China Limited lần này, hãng Yonex đã khéo léo lựa chọn tông màu chủ đạo đen nâu trầm tối để làm nổi bật lên các hoạ tiết trông vô cùng bắt mắt, tạo nên sự huyền bí, mạnh mẽ đầy cuốn hút của cây vợt ngay từ cái nhìn đầu tiên.
-
-Thiết kế cắt gió, giảm thiểu tối đa lực cản không khí giúp những truyền lực vào quả cầu nhanh và mạnh hơn. Ngoài ra, mặt vợt rộng ISOMETRIC còn giúp gia tăng hiệu suất đánh cầu chính xác, tiếng nổ khi đánh cầu cũng trở nên bắt tai hơn, tạo hiệu ứng sức mạnh giúp người chơi có thêm cảm hứng khi đánh.</textarea
-                                >
-                                <br />
-                                <br />
-                              </div>
-                              <div style="margin-top: 28px">
-                                <p>Thêm hình ảnh</p>
-                                <input
-                                  class="status5"
-                                  type="file"
-                                  accept="image/*"
-                                  id="themsanphamkhungcon2"
-                                  onchange="displayImage(this)"
-                                  multiple="multiple"
-                                />
-                                <br />
-                                <img
-                                  id="previewImage"
-                                  src="../images/100zz01.png"
-                                  alt="Hiển thị ảnh tại đây"
-                                  style="max-width: 200px; max-height: 200px"
-                                />
-                                <img
-                                  id="previewImage3"
-                                  src="../images/100zz0.png"
-                                  alt="Hiển thị ảnh tại đây"
-                                  style="max-width: 200px; max-height: 200px"
-                                />
-                                <br>
-                                <div id="delBtn">
-                                    <button class="status1 inProgress"  type="button" onclick="deleteImg('delBtn','previewImage','previewImage3')">Xóa hình ảnh</button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <script>
-                            function deleteImg(delBtn,previewImage,previewImage3){
-                                    document.getElementById(previewImage).src="#";
-                                    document.getElementById(previewImage3).src="#";
-                                    document.getElementById(delBtn).style.display="none"; 
-                            }
-                            function displayImage(input) {
-                              var file = input.files[0];
-                              var file1 = input.files[1];
-                              if (file) {
-                                var reader = new FileReader();
-                                reader.onload = function (e) {
-                                  document.getElementById("previewImage").src =
-                                    e.target.result;
-                                };
-                                reader.readAsDataURL(file);
-                              }
-                              if (file1) {
-                                var reader1 = new FileReader();
-                                reader1.onload = function (e1) {
-                                  document.getElementById("previewImage3").src =
-                                    e1.target.result;
-                                };
-                                reader1.readAsDataURL(file1);
-                              }
-                              document.getElementById("delBtn").style.display="inline"; 
-                            }
-                          </script>
-                        </div>
-                        <div class="modal-footer" style="text-align: center">
-                          <button
-                            class="saveBtn"
-                            type="submit"
-                          >
-                            Lưu chỉnh sửa
-                          </button>
-                        </form>
-                        </div>
-                      </div>
+                                  
+                                ">
+                    <div style="margin-top: 20px">
+                        <p class="title1">Phân loại</p>
+                        <select name="type" id="loaisanpham" class="tsp">
+                            <option value="Vợt" <?php
+                                if($row['Category'] == 'Vợt'){
+                                    echo 'selected';
+                                }
+                            ?>>Vợt cầu lông</option>
+                            <option value="Giày" <?php
+                                if($row['Category'] == 'Giày'){
+                                    echo 'selected';
+                                }
+                            ?>>Giày cầu lông</option>
+                            <option value="Quần Áo" <?php
+                                if($row['Category'] == 'Quần áo'){
+                                    echo 'selected';
+                                }
+                            ?>>Quần áo cầu lông</option>
+                            <option value="Phụ kiện" <?php
+                                if($row['Category'] == 'Phụ kiện'){
+                                    echo 'selected';
+                                }
+                            ?>>Phụ kiện cầu lông</option>
+                        </select>
+                        <p class="title1">Thương hiệu</p>
+                        <select class="tsp" name="brand" required>
+                            <option value="Yonex" <?php
+                                if($row['Brand'] == 'Yonex'){
+                                    echo 'selected';
+                                }
+                            ?>>Yonex</option>
+                            <option value="Lining" <?php
+                                if($row['Brand'] == 'Lining'){
+                                    echo 'selected';
+                                }
+                            ?>>Lining</option>
+                            <option value="Victor" <?php
+                                if($row['Brand'] == 'Victor'){
+                                    echo 'selected';
+                                }
+                            ?>>Victor</option>
+                            <option value="Apacs" <?php
+                                if($row['Brand'] == 'Apacs'){
+                                    echo 'selected';
+                                }
+                            ?>>Apacs</option>
+                        </select>
                     </div>
-                    </button>
-                  </td>
-                <script>
-                  // Get the modal
-                  var modal = document.getElementById("myModal");
+                </div>
+                <br />
+        </div>
+        <div class="column3" style="
+                            background-color: white;
+                           
+                          ">
+            <div class="table-container" style="margin-left: 30px">
+                <p>Mô tả sản phẩm</p>
+                <textarea rows="10" cols="40" name="description" placeholder="Mô tả chi tiết sản phẩm: "><?php echo $row['Description']?></textarea>
+                <br />
+                <br />
+                <div style="margin-top: 5%; text-align:center">
+                    <p>Thêm hình ảnh</p>
+                    <input type="file" name="image" accept="image/*" id="themsanphamkhungcon2" onchange="displayImage1(this)" />
+                    <br />
+                    <img id="previewImage1" src="../images/<?php echo $row['ImageURL']?>" alt="Hiển thị ảnh tại đây" style="max-width: 200px; max-height: 200px" />
+                    <br>
+                    <br>
+                    <button class="saveBtn1" type="submit" name="submit1"> Lưu chỉnh sửa </button>
+                </div>
+            </div>
+        </div>
+        <script>
+            function deleteImg(delBtn, previewImage, themsanphamkhungcon2) {
+                document.getElementById(themsanphamkhungcon2).value = "";
+                document.getElementById(previewImage).src = "#";
+                document.getElementById(delBtn).style.display = "none";
+            }
 
-                  // Get the button that opens the modal
-                  var btn = document.getElementById("button1");
+            function displayImage1(input) {
+                var file = input.files[0];
+                if (file) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById("previewImage1").src =
+                            e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+                document.getElementById("delBtn1").style.display = "inline";
+            }
+        </script>
+    </div>
+    </div>
+        </form>
+    </div>
 
-                  // Get the <span> element that closes the modal
-                  var span = document.getElementsByClassName("close")[0];
 
-                  // When the user clicks the button, open the modal
-                  btn.onclick = function () {
-                    modal.style.display = "block";
-                  };
+    <style>
+        .div1 {
+            display: flex;
+            justify-content: space-between;
+            width: 1000px;
+            margin: 20px auto;
+        }
 
-                  // When the user clicks on <span> (x), close the modal
-                  span.onclick = function () {
-                    modal.style.display = "none";
-                  };
+        .table-container {
+            width: 350px;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            margin-top: 70px;
+        }
 
-                  // When the user clicks anywhere outside of the modal, close it
-                  window.onclick = function (event) {
-                    if (event.target == modal) {
-                      modal.style.display = "none";
-                    }
-                  };
-                </script>
-                
+        .img {
+            margin: auto;
+            width: 30px;
+            margin-bottom: 200px;
+            margin-left: 100px;
+
+        }
+
+
+        .div1 label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .div1 input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+    </style>
+</body>
+
+</html>

@@ -42,7 +42,7 @@ input[type=email] {
         /* Sử dụng flexbox để xếp các phần tử trong hàng */
 }
 .thanhtoantext1{
-    margin-top: 10px;
+    margin-top: 10px; 
     font-size: 200%;
     color: orange;
 }

@@ -5,7 +5,7 @@
 
     // display account information
     $a= $_COOKIE["user"];
-    $sql3 = "SELECT * FROM account WHERE fullName = '$a'";
+    $sql3 = "SELECT * FROM account WHERE username = '$a'";
     $result3 = mysqli_query($conn, $sql3);
     $row3 = mysqli_fetch_array($result3, MYSQLI_ASSOC);
 
@@ -170,7 +170,7 @@ function thanhtoan() {
                 </div>
 
             </div>
-            <div class="khungthanhtoanb">
+            <div class="khungthanhtoanb" style="width:50%">
                 <div>
                     <p class="thanhtoantext2">
                         <span>ĐƠN HÀNG</span>
@@ -182,7 +182,7 @@ function thanhtoan() {
                                     foreach ($_SESSION['cart'] as $productId => $product) {
                                         if (is_array($product)) {
 
-                                            echo '<a href="../pages/chitiet100zz.php?id='.$productId.'">';
+                                            echo '<a'.$productId.'">';
                                             echo '<div class="thanhtoananh1">';
                                             echo '<img src="../images/' . $product['ImageURL'] . '">';
                                             echo '<div class="product-info">';

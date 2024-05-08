@@ -103,17 +103,26 @@ include("../pages/mainmenu2.php");
         background-color: #aaa;
     }
     </style>
+    
 </head>
 
 <body>
     <div>
         <div class="khunggiohang1">
             <table>
-                <tr>
-                    <th>Ảnh sản phẩm</th>
-                    <th>Tên sản phẩm</th>
-                    <th>Giá</th>
-                    <th>Số lượng</th>
+            <tr>
+                    <th>
+                        <P>Ảnh sản phẩm</P>
+                    </th>
+                    <th>
+                        <P style="margin-left: 300px;">Tên sản phẩm</P>
+                    </th>
+                    <th>
+                        <P style="margin-left: 320px;">Giá</P>
+                    </th>
+                    <th>
+                        <P style="margin-left: 350px;">Số lượng</P>
+                    </th>
                 </tr>
             </table>
         </div>
